@@ -135,8 +135,9 @@ section{padding:88px 5%;}
 .pricing{background:#fff;}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;max-width:940px;margin:0 auto;}
 .pc{background:var(--bg);border:1.5px solid var(--border);border-radius:22px;padding:34px 28px;transition:.3s;position:relative;}
-.pc.hot{border-color:var(--p);box-shadow:0 0 0 4px rgba(75,59,192,.09);background:#fff;}
-.hot-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;font-size:.71rem;font-weight:700;padding:4px 16px;border-radius:50px;white-space:nowrap;}
+.pc.hot{border-color:var(--p);border-width:2.5px;box-shadow:0 0 0 5px rgba(75,59,192,.13),0 16px 40px rgba(75,59,192,.18);background:#fff;transform:translateY(-6px);}
+.pc.hot:hover{transform:translateY(-10px);}
+.hot-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;font-size:.72rem;font-weight:700;padding:5px 18px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 14px rgba(75,59,192,.35);}
 .pname{font-size:.95rem;font-weight:700;margin-bottom:5px;}
 .pdesc{font-size:.8rem;color:var(--muted);margin-bottom:22px;}
 .pamount{font-size:2.4rem;font-weight:900;line-height:1;}
@@ -415,14 +416,15 @@ footer{background:#1A1340;padding:52px 5% 32px;}
   </div>
   <div class="grid3">
     <div class="pc">
-      <div class="pname">Free</div><div class="pdesc">소규모 학원</div>
+      <div class="pname">Free</div><div class="pdesc">처음 시작하는 학원</div>
       <div class="pamount">₩0</div><div class="pperiod">영원히 무료</div>
       <ul class="plist">
-        <li><span class="ck">✓</span>AI 상담 가이드 월 50회</li>
-        <li><span class="ck">✓</span>RAG 문서 3개</li>
+        <li><span class="ck">✓</span>AI 상담 가이드 <strong>월 10건</strong></li>
+        <li><span class="ck">✓</span>RAG 문서 <strong>1개</strong></li>
         <li><span class="ck">✓</span>기본 감정 분석</li>
-        <li><span class="ck">✓</span>계정 1개</li>
+        <li><span class="ck">✓</span>단일 계정 (1개)</li>
         <li class="off"><span class="ck">✕</span>맞춤 페르소나</li>
+        <li class="off"><span class="ck">✕</span>퇴원 예측 분석</li>
         <li class="off"><span class="ck">✕</span>조직 관리 시스템</li>
       </ul>
       <button class="pbtn pbtn-free" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">무료로 시작하기</button>
@@ -430,29 +432,33 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     <div class="pc hot">
       <div class="hot-badge">🔥 가장 인기</div>
       <div class="pname">Pro</div><div class="pdesc">성장하는 학원 & 다지점</div>
-      <div class="pamount">₩89,000<span>/월</span></div><div class="pperiod">연간 결제 시 20% 할인</div>
-      <ul class="plist">
-        <li><span class="ck">✓</span>AI 상담 가이드 무제한</li>
-        <li><span class="ck">✓</span>RAG 문서 무제한</li>
-        <li><span class="ck">✓</span>고급 감정 분석 & 퇴원 예측</li>
-        <li><span class="ck">✓</span>계정 10개</li>
-        <li><span class="ck">✓</span>맞춤 페르소나 설정</li>
+      <div class="pamount">₩79,000<span>/월</span></div>
+      <div class="pperiod" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+        <span style="background:#EDE9FF;color:var(--p);font-weight:700;padding:2px 9px;border-radius:50px;font-size:.72rem;">연결제 ₩59,000/월</span>
+        <span>· 14일 무료 체험</span>
+      </div>
+      <ul class="plist" style="margin-top:18px;">
+        <li><span class="ck">✓</span>AI 상담 가이드 <strong>월 150건</strong></li>
+        <li><span class="ck">✓</span>RAG 문서 <strong>무제한</strong></li>
+        <li><span class="ck">✓</span>고급 감정 분석 & <strong>퇴원 예측</strong></li>
+        <li><span class="ck">✓</span>계정 <strong>5개</strong></li>
+        <li><span class="ck">✓</span><strong>맞춤 페르소나</strong> 설정</li>
         <li><span class="ck">✓</span>상담 리포트 & 통계</li>
       </ul>
-      <button class="pbtn pbtn-pro" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">14일 무료 체험</button>
+      <button class="pbtn pbtn-pro" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">14일 무료 체험 시작 →</button>
     </div>
     <div class="pc">
       <div class="pname">Enterprise</div><div class="pdesc">프랜차이즈 & 대형 법인</div>
-      <div class="pamount" style="font-size:1.9rem;">문의</div><div class="pperiod">맞춤 견적 제공</div>
+      <div class="pamount" style="font-size:1.9rem;">문의</div><div class="pperiod">맞춤 견적 · 전용 계약</div>
       <ul class="plist">
         <li><span class="ck">✓</span>Pro 모든 기능 포함</li>
+        <li><span class="ck">✓</span>상담 분석 <strong>무제한</strong></li>
         <li><span class="ck">✓</span>무제한 지점 & 계정</li>
+        <li><span class="ck">✓</span><strong>전용 관리자 모드</strong></li>
         <li><span class="ck">✓</span>전 지점 통합 대시보드</li>
-        <li><span class="ck">✓</span>전담 CS 매니저</li>
-        <li><span class="ck">✓</span>API 연동 지원</li>
-        <li><span class="ck">✓</span>SLA 보장 & 보안 감사</li>
+        <li><span class="ck">✓</span>전담 CS 매니저 & SLA 보장</li>
       </ul>
-      <button class="pbtn pbtn-ent">문의하기 →</button>
+      <button class="pbtn pbtn-ent" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">도입 문의하기 →</button>
     </div>
   </div>
   <div class="sec-cta">
