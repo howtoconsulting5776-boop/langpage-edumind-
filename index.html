@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>에듀마인 인사이트</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --p:#4B3BC0;--pd:#3B2F8F;--pl:#6C5CE7;--ps:#EDE9FF;--bg:#F8F7FF;
+  --txt:#1A1340;--muted:#6B7280;--border:#E8E4FF;--white:#fff;
+  --cyan:#00C9B8;--pink:#FF6B9D;--orange:#FF8C42;--green:#00C48C;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;}
+
+/* LOGO SVG */
+.logo-svg{width:36px;height:36px;flex-shrink:0;}
+.logo-wrap{display:flex;align-items:center;gap:10px;}
+.logo-text{display:flex;flex-direction:column;line-height:1.15;}
+.logo-ko{font-size:.85rem;font-weight:700;color:var(--pd);}
+.logo-en{font-size:.68rem;color:var(--muted);}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:12px 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;}
+.nav-links a:hover{color:var(--p);}
+.nav-cta{background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;border:none;padding:10px 22px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 5% 60px;background:linear-gradient(150deg,#3B2F8F,#4B3BC0,#5B4BD0);position:relative;overflow:hidden;}
+.hblob{position:absolute;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;}
+.hb1{width:380px;height:380px;top:-100px;left:-80px;}
+.hb2{width:280px;height:280px;bottom:-60px;right:0;}
+.badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 16px;border-radius:50px;font-size:.76rem;font-weight:700;margin-bottom:24px;}
+.hero h1{font-size:clamp(2rem,5vw,3.6rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:18px;}
+.hero h1 em{font-style:normal;border-bottom:4px solid var(--cyan);}
+.hero p{font-size:1rem;color:rgba(255,255,255,.8);max-width:500px;margin:0 auto 36px;line-height:1.85;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
+.btn-w{background:#fff;color:var(--pd);border:none;padding:14px 32px;border-radius:50px;font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(0,0,0,.2);}
+.btn-w:hover{transform:translateY(-2px);}
+.btn-g{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3);padding:14px 28px;border-radius:50px;font-size:.92rem;font-weight:600;cursor:pointer;font-family:inherit;}
+.stats{display:flex;justify-content:center;gap:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:24px 32px;max-width:680px;margin:0 auto;flex-wrap:wrap;}
+.stat{flex:1;min-width:110px;text-align:center;padding:6px 12px;}
+.stat+.stat{border-left:1px solid rgba(255,255,255,.15);}
+.stat-n{font-size:1.8rem;font-weight:900;color:#fff;}
+.stat-l{font-size:.72rem;color:rgba(255,255,255,.65);margin-top:3px;}
+
+/* COMMON SECTION */
+section{padding:88px 5%;}
+.sec-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 13px;border-radius:50px;margin-bottom:12px;}
+.sec-title{text-align:center;margin-bottom:56px;}
+.sec-title h2{font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:900;line-height:1.3;}
+.sec-title p{color:var(--muted);margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.85;font-size:.9rem;}
+
+/* PAIN */
+.pain{background:#fff;}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;max-width:1080px;margin:0 auto;}
+.pain-card{background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:28px;transition:.3s;}
+.pain-card:hover{border-color:var(--pl);transform:translateY(-4px);box-shadow:0 10px 28px rgba(75,59,192,.1);}
+.pnum{width:34px;height:34px;border-radius:9px;background:var(--ps);color:var(--p);font-weight:900;font-size:.88rem;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.pain-card h3{font-size:.95rem;font-weight:700;margin-bottom:8px;}
+.pain-card p{font-size:.83rem;color:var(--muted);line-height:1.75;}
+
+/* HOW */
+.how{background:var(--bg);}
+.steps{display:flex;gap:0;max-width:860px;margin:0 auto;position:relative;flex-wrap:wrap;}
+.steps::before{content:'';position:absolute;top:30px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--pl),var(--cyan));}
+.step{flex:1;min-width:160px;text-align:center;padding:0 16px;}
+.step-n{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;font-weight:900;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;position:relative;z-index:1;box-shadow:0 4px 18px rgba(75,59,192,.3);}
+.step h3{font-size:.9rem;font-weight:700;margin-bottom:7px;}
+.step p{font-size:.8rem;color:var(--muted);line-height:1.7;}
+
+/* FEATURES */
+.features{background:#fff;}
+.grid5{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;max-width:1080px;margin:0 auto;}
+.fc{background:var(--bg);border:1.5px solid var(--border);border-radius:22px;padding:30px;transition:.3s;position:relative;overflow:hidden;}
+.fc:hover{border-color:var(--pl);transform:translateY(-5px);box-shadow:0 14px 36px rgba(75,59,192,.1);}
+.fc-bar{position:absolute;top:0;left:0;right:0;height:3px;}
+.b1{background:linear-gradient(90deg,var(--pl),var(--pd));}
+.b2{background:linear-gradient(90deg,var(--cyan),#3B82F6);}
+.b3{background:linear-gradient(90deg,var(--pink),var(--pl));}
+.b4{background:linear-gradient(90deg,var(--orange),var(--pink));}
+.b5{background:linear-gradient(90deg,var(--green),var(--cyan));}
+.fi{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;margin-top:6px;}
+.fi1{background:#EDE9FF;}.fi2{background:#E0F7F5;}.fi3{background:#FFE8F3;}.fi4{background:#FFF0E6;}.fi5{background:#E0FAF1;}
+.fc h3{font-size:1rem;font-weight:700;margin-bottom:9px;}
+.fc p{font-size:.83rem;color:var(--muted);line-height:1.75;}
+.ftag{display:inline-block;margin-top:13px;font-size:.71rem;font-weight:700;padding:3px 11px;border-radius:50px;background:var(--ps);color:var(--p);}
+
+/* PRICING */
+.pricing{background:var(--bg);}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;max-width:940px;margin:0 auto;}
+.pc{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:34px 28px;transition:.3s;position:relative;}
+.pc.hot{border-color:var(--p);box-shadow:0 0 0 4px rgba(75,59,192,.09);}
+.hot-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;font-size:.71rem;font-weight:700;padding:4px 16px;border-radius:50px;white-space:nowrap;}
+.pname{font-size:.95rem;font-weight:700;margin-bottom:5px;}
+.pdesc{font-size:.8rem;color:var(--muted);margin-bottom:22px;}
+.pamount{font-size:2.4rem;font-weight:900;line-height:1;}
+.pamount span{font-size:.9rem;font-weight:400;color:var(--muted);}
+.pperiod{font-size:.77rem;color:var(--muted);margin-top:3px;margin-bottom:26px;}
+.plist{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.plist li{font-size:.83rem;display:flex;gap:9px;align-items:flex-start;color:var(--muted);}
+.ck{color:var(--green);font-weight:700;flex-shrink:0;}
+.plist li.off{color:#C4C0D8;}
+.plist li.off .ck{color:#D1CDE8;}
+.pbtn{width:100%;padding:12px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:.2s;}
+.pbtn-free{background:var(--ps);color:var(--p);}
+.pbtn-pro{background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;box-shadow:0 4px 14px rgba(75,59,192,.35);}
+.pbtn-pro:hover{opacity:.9;transform:translateY(-2px);}
+.pbtn-ent{background:#fff;color:var(--txt);border:1.5px solid var(--border);}
+.pbtn-ent:hover{border-color:var(--p);color:var(--p);}
+
+/* TESTIMONIALS */
+.testi{background:#fff;}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;max-width:980px;margin:0 auto;}
+.tc{background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:26px;transition:.3s;}
+.tc:hover{border-color:var(--pl);transform:translateY(-3px);}
+.stars{color:#FBBF24;font-size:.85rem;margin-bottom:12px;letter-spacing:2px;}
+.tc p{font-size:.85rem;color:var(--txt);line-height:1.8;margin-bottom:20px;}
+.tauthor{display:flex;align-items:center;gap:10px;}
+.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.av1{background:linear-gradient(135deg,var(--pl),var(--pd));}
+.av2{background:linear-gradient(135deg,var(--cyan),#3B82F6);}
+.av3{background:linear-gradient(135deg,var(--pink),var(--orange));}
+.aname{font-size:.85rem;font-weight:700;}
+.arole{font-size:.73rem;color:var(--muted);}
+
+/* FAQ */
+.faq{background:var(--bg);}
+.flist{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:9px;}
+.fi-item{background:#fff;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;transition:.2s;}
+.fi-item.open{border-color:var(--pl);}
+.fq{width:100%;padding:18px 22px;background:none;border:none;color:var(--txt);font-size:.88rem;font-weight:700;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;font-family:inherit;}
+.farrow{color:var(--p);font-size:.9rem;transition:.3s;flex-shrink:0;}
+.fi-item.open .farrow{transform:rotate(180deg);}
+.fa{max-height:0;overflow:hidden;transition:.3s ease;}
+.fa-inner{padding:0 22px 18px;font-size:.83rem;color:var(--muted);line-height:1.8;}
+.fi-item.open .fa{max-height:180px;}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--pd),var(--pl));padding:96px 5%;text-align:center;position:relative;overflow:hidden;}
+.cta::before,.cta::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.06);}
+.cta::before{width:360px;height:360px;top:-140px;left:-80px;}
+.cta::after{width:260px;height:260px;bottom:-80px;right:-40px;}
+.cta h2{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:14px;position:relative;}
+.cta-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:18px 28px;display:inline-block;margin-bottom:28px;position:relative;}
+.cta-card p{font-size:.86rem;color:rgba(255,255,255,.9);line-height:1.7;margin:0;}
+.cta-sub{color:rgba(255,255,255,.75);font-size:.92rem;margin-bottom:32px;line-height:1.8;position:relative;}
+.cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;}
+.cta-inp{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:#fff;padding:13px 20px;border-radius:50px;font-size:.88rem;width:270px;outline:none;font-family:inherit;}
+.cta-inp::placeholder{color:rgba(255,255,255,.55);}
+.cta-inp:focus{border-color:#fff;}
+
+/* FOOTER */
+footer{background:var(--pd);padding:40px 5%;text-align:center;}
+.ftop{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;}
+.flogo-txt{color:#fff;font-weight:700;font-size:.92rem;}
+footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
+.flinks{display:flex;gap:18px;justify-content:center;margin-top:12px;}
+.flinks a{font-size:.73rem;color:rgba(255,255,255,.4);text-decoration:none;}
+.flinks a:hover{color:rgba(255,255,255,.75);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.fu{opacity:0;animation:fadeUp .5s ease forwards;}
+.d1{animation-delay:.1s;}.d2{animation-delay:.2s;}.d3{animation-delay:.3s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+.fl{animation:float 3.5s ease-in-out infinite;}
+
+@media(max-width:640px){.nav-links{display:none;}.steps::before{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <img src="logo.png" alt="에듀마인 인사이트 로고" class="logo-svg" style="border-radius:10px;"/>
+    <div class="logo-text">
+      <span class="logo-ko">에듀마인 인사이트</span>
+      <span class="logo-en">EduMind Insight</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#pain">문제</a></li>
+    <li><a href="#features">기능</a></li>
+    <li><a href="#pricing">요금제</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료로 시작하기</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hblob hb1"></div>
+  <div class="hblob hb2"></div>
+  <div style="position:relative;">
+    <div class="badge fu">🧠 RAG 기반 AI 학원 상담 솔루션</div>
+    <h1 class="fu d1">상담의 데이터화,<br/><em>학원의 자산</em>이 됩니다</h1>
+    <p class="fu d2">AI 기반 학부모 상담 감정 분석으로<br/>이탈을 방지하고 신뢰를 쌓으세요.</p>
+    <div class="hero-btns fu d3">
+      <button class="btn-w" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">🎉 무료로 시작하기</button>
+      <button class="btn-g" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">기능 살펴보기 →</button>
+    </div>
+    <div class="stats fu d3">
+      <div class="stat"><div class="stat-n fl">98%</div><div class="stat-l">상담 만족도 향상</div></div>
+      <div class="stat"><div class="stat-n fl" style="animation-delay:.4s">3배</div><div class="stat-l">퇴원율 감소 효과</div></div>
+      <div class="stat"><div class="stat-n fl" style="animation-delay:.8s">5분</div><div class="stat-l">AI 상담 뇌 구축</div></div>
+      <div class="stat"><div class="stat-n fl" style="animation-delay:1.2s">24/7</div><div class="stat-l">상담 가이드 지원</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain" id="pain">
+  <div class="sec-title">
+    <div class="sec-label" style="background:#FFE8F3;color:#C0396B;">😰 학원 현장의 문제</div>
+    <h2>이런 상황, 겪어본 적 있으신가요?</h2>
+    <p>현장에서 반복되는 4가지 고질적인 상담 문제, 에듀마인 인사이트가 해결합니다.</p>
+  </div>
+  <div class="grid4">
+    <div class="pain-card"><div class="pnum">01</div><h3>💨 휘발되는 상담 데이터</h3><p>학부모와 나눈 대화가 단순 메모로 끝나거나 기록되지 않아 체계적 관리가 불가능합니다.</p></div>
+    <div class="pain-card"><div class="pnum">02</div><h3>📊 상담 역량의 불균형</h3><p>원장님만큼 학원 철학을 이해하는 강사가 부족해 상담 결과가 개인 역량에만 의존합니다.</p></div>
+    <div class="pain-card"><div class="pnum">03</div><h3>⏰ 퇴원 신호 포착 실패</h3><p>학부모의 말투에 숨겨진 불만 징후를 감지하지 못해 골든타임을 놓칩니다.</p></div>
+    <div class="pain-card"><div class="pnum">04</div><h3>🎭 일관성 없는 대응</h3><p>동일 컴플레인에 강사마다 다르게 대응해 학원 브랜드 신뢰도가 흔들립니다.</p></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how">
+  <div class="sec-title">
+    <div class="sec-label" style="background:#E0F7F5;color:#007A6E;">⚡ 작동 방식</div>
+    <h2>3단계로 시작하는 AI 상담</h2>
+    <p>복잡한 설정 없이 5분 안에 학원만의 AI 상담 파트너를 만들 수 있습니다.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><h3>지식 베이스 구축</h3><p>운영 매뉴얼, 교육 철학, 모범 상담 사례를 PDF로 업로드합니다.</p></div>
+    <div class="step"><div class="step-n">2</div><h3>AI 페르소나 설정</h3><p>공감형·원칙형·대안제시형 중 학원에 맞는 상담 톤을 설정합니다.</p></div>
+    <div class="step"><div class="step-n">3</div><h3>상담 분석 & 가이드</h3><p>상담 내용을 입력하면 감정 분석과 맞춤 스크립트를 즉시 받아봅니다.</p></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="sec-title">
+    <div class="sec-label" style="background:var(--ps);color:var(--p);">✨ 핵심 기능</div>
+    <h2>우리 학원만의 '상담 뇌'를 구축하세요</h2>
+    <p>단순한 AI 채팅이 아닌, 학원 고유의 데이터로 작동하는 RAG 기반 솔루션입니다.</p>
+  </div>
+  <div class="grid5">
+    <div class="fc"><div class="fc-bar b1"></div><div class="fi fi1">📚</div><h3>맞춤형 RAG 지식 베이스</h3><p>운영 매뉴얼·교육 철학·모범 사례를 파일로 학습시켜 우리 학원만의 AI를 만듭니다.</p><div class="ftag">RAG 기술</div></div>
+    <div class="fc"><div class="fc-bar b2"></div><div class="fi fi2">🎭</div><h3>AI 페르소나 설정</h3><p>공감형, 원칙형, 대안제시형 등 원장님의 말투로 상담 가이드를 제공합니다.</p><div class="ftag">맞춤 페르소나</div></div>
+    <div class="fc"><div class="fc-bar b3"></div><div class="fi fi3">💬</div><h3>상담 감정 분석 & 요약</h3><p>이탈 위험도·긍정/부정 수치를 즉시 분석하고 핵심 키워드를 자동 추출합니다.</p><div class="ftag">감정 AI 분석</div></div>
+    <div class="fc"><div class="fc-bar b4"></div><div class="fi fi4">📝</div><h3>맞춤형 대응 스크립트</h3><p>학습된 매뉴얼 기반으로 상황에 맞는 3종 스크립트를 즉시 생성합니다.</p><div class="ftag">스크립트 생성</div></div>
+    <div class="fc"><div class="fc-bar b5"></div><div class="fi fi5">🏢</div><h3>조직 관리 시스템</h3><p>원장-강사 계정 분리로 권한별 접근 관리. 프랜차이즈 멀티 테넌시 지원.</p><div class="ftag">Multi-Tenancy</div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="sec-title">
+    <div class="sec-label" style="background:#FFF0E6;color:#C05A1A;">💰 요금제</div>
+    <h2>규모에 맞는 요금제를 선택하세요</h2>
+    <p>모든 플랜은 14일 무료 체험 가능. 신용카드 없이 바로 시작하세요.</p>
+  </div>
+  <div class="grid3">
+    <div class="pc">
+      <div class="pname">Free</div><div class="pdesc">소규모 학원</div>
+      <div class="pamount">₩0</div><div class="pperiod">영원히 무료</div>
+      <ul class="plist">
+        <li><span class="ck">✓</span>AI 상담 가이드 월 50회</li>
+        <li><span class="ck">✓</span>RAG 문서 3개</li>
+        <li><span class="ck">✓</span>기본 감정 분석</li>
+        <li><span class="ck">✓</span>계정 1개</li>
+        <li class="off"><span class="ck">✕</span>맞춤 페르소나</li>
+        <li class="off"><span class="ck">✕</span>조직 관리 시스템</li>
+      </ul>
+      <button class="pbtn pbtn-free">무료로 시작하기</button>
+    </div>
+    <div class="pc hot">
+      <div class="hot-badge">🔥 가장 인기</div>
+      <div class="pname">Pro</div><div class="pdesc">성장하는 학원 & 다지점</div>
+      <div class="pamount">₩89,000<span>/월</span></div><div class="pperiod">연간 결제 시 20% 할인</div>
+      <ul class="plist">
+        <li><span class="ck">✓</span>AI 상담 가이드 무제한</li>
+        <li><span class="ck">✓</span>RAG 문서 무제한</li>
+        <li><span class="ck">✓</span>고급 감정 분석 & 퇴원 예측</li>
+        <li><span class="ck">✓</span>계정 10개</li>
+        <li><span class="ck">✓</span>맞춤 페르소나 설정</li>
+        <li><span class="ck">✓</span>상담 리포트 & 통계</li>
+      </ul>
+      <button class="pbtn pbtn-pro">14일 무료 체험</button>
+    </div>
+    <div class="pc">
+      <div class="pname">Enterprise</div><div class="pdesc">프랜차이즈 & 대형 법인</div>
+      <div class="pamount" style="font-size:1.9rem;">문의</div><div class="pperiod">맞춤 견적 제공</div>
+      <ul class="plist">
+        <li><span class="ck">✓</span>Pro 모든 기능 포함</li>
+        <li><span class="ck">✓</span>무제한 지점 & 계정</li>
+        <li><span class="ck">✓</span>전 지점 통합 대시보드</li>
+        <li><span class="ck">✓</span>전담 CS 매니저</li>
+        <li><span class="ck">✓</span>API 연동 지원</li>
+        <li><span class="ck">✓</span>SLA 보장 & 보안 감사</li>
+      </ul>
+      <button class="pbtn pbtn-ent">문의하기 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testimonials">
+  <div class="sec-title">
+    <div class="sec-label" style="background:#E0FAF1;color:#006B52;">💬 사용자 후기</div>
+    <h2>현장의 목소리를 들어보세요</h2>
+    <p>에듀마인 인사이트를 도입한 교육 현장의 실제 후기입니다.</p>
+  </div>
+  <div class="tgrid">
+    <div class="tc"><div class="stars">★★★★★</div><p>"신입 강사가 저만큼 상담하는 게 가능한지 의심했는데, 실제로 해냈습니다. 공감형 스크립트가 학원 철학을 완벽히 반영해줬어요."</p><div class="tauthor"><div class="av av1">👩</div><div><div class="aname">김미래 원장</div><div class="arole">수학의 봄 학원 | 서울 강남</div></div></div></div>
+    <div class="tc"><div class="stars">★★★★★</div><p>"상담이 제일 두려웠는데 감정 분석 덕에 학부모 마음을 먼저 파악하고 대응하니 컴플레인이 눈에 띄게 줄었어요!"</p><div class="tauthor"><div class="av av2">🧑</div><div><div class="aname">박지훈 강사</div><div class="arole">영어 전문 학원 | 경기 분당</div></div></div></div>
+    <div class="tc"><div class="stars">★★★★★</div><p>"전국 23개 지점의 상담 퀄리티를 동일하게 유지하는 게 숙원이었는데, 본사 철학이 모든 지점에 일관되게 전달됩니다."</p><div class="tauthor"><div class="av av3">👨‍💼</div><div><div class="aname">이성민 본부장</div><div class="arole">에이스 에듀 프랜차이즈 본사</div></div></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="sec-title">
+    <div class="sec-label" style="background:var(--ps);color:var(--p);">❓ 자주 묻는 질문</div>
+    <h2>궁금한 점이 있으신가요?</h2>
+  </div>
+  <div class="flist">
+    <div class="fi-item"><button class="fq" onclick="toggleFaq(this)">RAG가 뭔가요? 비개발자도 쓸 수 있나요? <span class="farrow">▾</span></button><div class="fa"><div class="fa-inner">RAG는 AI가 학원 자체 문서를 기반으로 답변하는 기술입니다. PDF 업로드만으로 설정 완료, 5분 안에 누구나 시작할 수 있어요!</div></div></div>
+    <div class="fi-item"><button class="fq" onclick="toggleFaq(this)">상담 데이터가 외부에 유출되지 않나요? <span class="farrow">▾</span></button><div class="fa"><div class="fa-inner">학원별 데이터는 완전히 격리된 환경에서 암호화 저장됩니다. 타 학원과의 데이터 공유는 절대 없습니다.</div></div></div>
+    <div class="fi-item"><button class="fq" onclick="toggleFaq(this)">기존 상담 자료를 어떻게 학습시키나요? <span class="farrow">▾</span></button><div class="fa"><div class="fa-inner">운영 매뉴얼, 모범 상담 사례를 PDF/TXT로 업로드하면 됩니다. 카톡 대화 내역도 텍스트 변환 후 학습 가능합니다.</div></div></div>
+    <div class="fi-item"><button class="fq" onclick="toggleFaq(this)">업그레이드 시 기존 데이터는 유지되나요? <span class="farrow">▾</span></button><div class="fa"><div class="fa-inner">네, 모든 상담 기록·RAG 문서·설정이 그대로 유지됩니다. 언제든지 업다운그레이드 가능하며 데이터 손실은 없습니다.</div></div></div>
+    <div class="fi-item"><button class="fq" onclick="toggleFaq(this)">프랜차이즈 지점별로 다른 설정을 줄 수 있나요? <span class="farrow">▾</span></button><div class="fa"><div class="fa-inner">Enterprise 플랜에서 본사 공통 지식 베이스 기반으로 지점별 맞춤 설정을 추가할 수 있습니다.</div></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <h2>오늘 바로 시작해보세요 💙</h2>
+  <div class="cta-card">
+    <p>강사님께 드리는 응원 — <strong>오늘 하루도 정말 수고 많으셨습니다.</strong><br/>에듀마인 인사이트와 함께라면 이 상담도 잘 해내실 수 있습니다 ☺</p>
+  </div>
+  <p class="cta-sub">14일 무료 체험, 신용카드 불필요.<br/>5분 안에 학원만의 AI 상담 파트너를 만드세요.</p>
+  <div class="cta-row">
+    <input class="cta-inp" type="email" placeholder="학원 이메일 주소를 입력하세요"/>
+    <button class="btn-w">무료로 시작하기 →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftop">
+    <img src="logo.png" alt="에듀마인 인사이트 로고" style="width:30px;height:30px;border-radius:8px;"/>
+    <span class="flogo-txt">에듀마인 인사이트</span>
+  </div>
+  <p>데이터로 읽는 학부모의 마음, 더 정교한 교육 로드맵의 시작.</p>
+  <div class="flinks">
+    <a href="#">개인정보처리방침</a>
+    <a href="#">이용약관</a>
+    <a href="#">고객센터</a>
+  </div>
+  <p style="margin-top:14px;">© 2025 에듀마인 인사이트. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleFaq(btn){
+  const item=btn.closest('.fi-item');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.fi-item').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
+  });
+},{threshold:.1});
+document.querySelectorAll('.pain-card,.fc,.pc,.tc,.step').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(22px)';
+  el.style.transition='opacity .5s ease,transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
