@@ -37,9 +37,10 @@ nav{position:fixed;top:0;width:100%;z-index:100;padding:12px 5%;display:flex;ali
 .hb2{width:320px;height:320px;bottom:80px;right:-60px;}
 .hb3{width:200px;height:200px;top:30%;left:5%;}
 
-/* 대시보드 목업 이미지 */
+/* 대시보드 목업 */
 .hero-mockup{position:relative;margin-top:44px;z-index:2;}
 .mockup-img{display:block;max-width:820px;width:100%;margin:0 auto;border-radius:16px 16px 0 0;box-shadow:0 -8px 60px rgba(0,0,0,.35);}
+#mockupCanvas{display:block;max-width:820px;width:100%;margin:0 auto;border-radius:16px 16px 0 0;box-shadow:0 -8px 60px rgba(0,0,0,.35);}
 
 .hero-content{position:relative;z-index:2;}
 .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 16px;border-radius:50px;font-size:.76rem;font-weight:700;margin-bottom:24px;}
@@ -313,7 +314,8 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     </div>
     <!-- 대시보드 목업 -->
     <div class="hero-mockup fu d4">
-      <img src="mockup.png" alt="에듀마인 인사이트 서비스 화면" class="mockup-img"/>
+      <canvas id="mockupCanvas" aria-label="에듀마인 인사이트 서비스 화면"></canvas>
+      <noscript><img src="mockup.gif" alt="에듀마인 인사이트 서비스 화면" class="mockup-img"/></noscript>
     </div>
   </div>
 </section>
@@ -568,6 +570,138 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 </footer>
 
 <script>
+// ── GIF 1.2배속 캔버스 플레이어 ──
+(function(){
+  const SPEED = 1.2;
+  const canvas = document.getElementById('mockupCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function parseGIF(buf){
+    const u8 = new Uint8Array(buf);
+    let p = 0;
+    const read = n => { const s = u8.slice(p, p+n); p+=n; return s; };
+    const u8v = () => u8[p++];
+    const u16v = () => { const v = u8[p]|(u8[p+1]<<8); p+=2; return v; };
+
+    read(6); // header
+    const sw = u16v(), sh = u16v();
+    const packed = u8v();
+    const hasCT = (packed>>7)&1;
+    const ctSize = hasCT ? 3*(2<<(packed&7)) : 0;
+    u8v(); u8v(); // bg, aspect
+    const globalCT = hasCT ? read(ctSize) : null;
+
+    const frames = [];
+    let delay = 100, disposeMethod = 0, transparent = -1;
+
+    while(p < u8.length){
+      const b = u8v();
+      if(b === 0x3B) break; // trailer
+
+      if(b === 0x21){ // extension
+        const label = u8v();
+        if(label === 0xF9){ // graphic control
+          u8v(); // block size
+          const flg = u8v();
+          delay = u16v() * 10;
+          transparent = (flg&1) ? u8v() : (u8v(), -1);
+          disposeMethod = (flg>>2)&7;
+          u8v(); // terminator
+        } else {
+          let bs; while((bs=u8v())>0) p+=bs;
+        }
+        continue;
+      }
+
+      if(b === 0x2C){ // image descriptor
+        const lx=u16v(),ly=u16v(),lw=u16v(),lh=u16v();
+        const ipacked=u8v();
+        const hasLCT=(ipacked>>7)&1;
+        const lctSize=hasLCT?3*(2<<(ipacked&7)):0;
+        const lct=hasLCT?read(lctSize):null;
+        const ct = lct||globalCT;
+        const minCode=u8v();
+        let compData=[];
+        let bs; while((bs=u8v())>0){ compData.push(...read(bs)); }
+
+        // LZW decode
+        const initSize = minCode+1;
+        let codeSize=initSize, clearCode=1<<minCode, eoi=clearCode+1;
+        let dict=[]; for(let i=0;i<clearCode;i++) dict.push([i]);
+        dict.push([]); dict.push([]); // clear, eoi
+        let prev=null, pixels=[];
+        let bitBuf=0, bitCount=0, di=0;
+        const nextCode=()=>{
+          while(bitCount<codeSize){ bitBuf|=(compData[di++]||0)<<bitCount; bitCount+=8; }
+          const code=bitBuf&((1<<codeSize)-1); bitBuf>>=codeSize; bitCount-=codeSize; return code;
+        };
+        nextCode(); // clear
+        prev=null;
+        while(true){
+          const code=nextCode();
+          if(code===eoi) break;
+          if(code===clearCode){ codeSize=initSize; dict=dict.slice(0,eoi+1); prev=null; continue; }
+          let entry;
+          if(code<dict.length) entry=[...dict[code]];
+          else if(prev!==null) entry=[...dict[prev], dict[prev][0]];
+          else continue;
+          pixels.push(...entry);
+          if(prev!==null){ dict.push([...dict[prev], entry[0]]); if(dict.length===(1<<codeSize)+1&&codeSize<12) codeSize++; }
+          prev=code;
+        }
+
+        // build ImageData
+        const idata = new ImageData(lw, lh);
+        for(let i=0;i<pixels.length;i++){
+          const ci=pixels[i];
+          if(ci===transparent){ idata.data[i*4+3]=0; continue; }
+          const off=ci*3;
+          idata.data[i*4]=ct[off]; idata.data[i*4+1]=ct[off+1]; idata.data[i*4+2]=ct[off+2]; idata.data[i*4+3]=255;
+        }
+        frames.push({idata,lx,ly,lw,lh,delay:delay||100,disposeMethod});
+        delay=100; transparent=-1;
+      }
+    }
+    return {sw,sh,frames};
+  }
+
+  fetch('mockup.gif')
+    .then(r=>r.arrayBuffer())
+    .then(buf=>{
+      const gif = parseGIF(buf);
+      if(!gif||!gif.frames.length) return;
+      canvas.width = gif.sw;
+      canvas.height = gif.sh;
+      let fi=0, last=0;
+      const offscreen = document.createElement('canvas');
+      offscreen.width=gif.sw; offscreen.height=gif.sh;
+      const octx = offscreen.getContext('2d');
+
+      function draw(ts){
+        if(!last) last=ts;
+        const frame = gif.frames[fi];
+        const wait = frame.delay / SPEED;
+        if(ts - last >= wait){
+          if(frame.disposeMethod===2) octx.clearRect(frame.lx,frame.ly,frame.lw,frame.lh);
+          octx.putImageData(frame.idata, frame.lx, frame.ly);
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          ctx.drawImage(offscreen,0,0);
+          last = ts;
+          fi = (fi+1) % gif.frames.length;
+        }
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    })
+    .catch(()=>{
+      // 로드 실패 시 img 태그 대체
+      const img = document.createElement('img');
+      img.src='mockup.gif'; img.className='mockup-img';
+      canvas.replaceWith(img);
+    });
+})();
+
 // 도넛 차트 애니메이션
 function animateDonuts(){
   document.querySelectorAll('.donut-fg').forEach(el=>{
