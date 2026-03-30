@@ -570,7 +570,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 </footer>
 
 <script>
-// ── GIF 1.2배속 캔버스 플레이어 (gifuct-js) ──
+// ── GIF 3배속 캔버스 플레이어 (omggif) ──
 (function(){
   const SPEED = 3.0;
   const canvas = document.getElementById('mockupCanvas');
@@ -583,61 +583,51 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     canvas.replaceWith(img);
   }
 
-  function startPlayer(gifuct){
+  function startPlayer(){
     fetch('mockup.gif')
       .then(r => r.arrayBuffer())
       .then(buf => {
-        const parsed = gifuct.parseGIF(buf);
-        const frames = gifuct.decompressFrames(parsed, true);
-        if(!frames || !frames.length){ fallback(); return; }
+        const reader = new GifReader(new Uint8Array(buf));
+        const W = reader.width, H = reader.height;
+        const total = reader.numFrames();
+        if(!total){ fallback(); return; }
 
-        const {width: sw, height: sh} = frames[0].dims;
-        canvas.width  = parsed.lsd.width;
-        canvas.height = parsed.lsd.height;
+        canvas.width  = W;
+        canvas.height = H;
         const ctx = canvas.getContext('2d');
 
-        const tmpCanvas = document.createElement('canvas');
-        tmpCanvas.width  = canvas.width;
-        tmpCanvas.height = canvas.height;
-        const tmpCtx = tmpCanvas.getContext('2d');
+        // 모든 프레임을 합성하여 미리 디코딩
+        const composite = new Uint8ClampedArray(W * H * 4);
+        const frames = [];
+        for(let i = 0; i < total; i++){
+          const info = reader.frameInfo(i);
+          reader.decodeAndBlitFrameRGBA(i, composite);
+          frames.push({
+            imageData: new ImageData(new Uint8ClampedArray(composite), W, H),
+            delay: Math.max((info.delay || 5) * 10, 20) // ms
+          });
+        }
 
         let fi = 0, lastTs = null;
-
-        function drawFrame(ts){
+        function draw(ts){
           if(lastTs === null) lastTs = ts;
-          const frame  = frames[fi];
-          const delay  = (frame.delay || 10) * 10 / SPEED;
-
-          if(ts - lastTs >= delay){
-            const { width, height, top, left } = frame.dims;
-
-            if(frame.disposalType === 2){
-              tmpCtx.clearRect(left, top, width, height);
-            }
-
-            const patch = new ImageData(
-              new Uint8ClampedArray(frame.patch),
-              width,
-              height
-            );
-            tmpCtx.putImageData(patch, left, top);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(tmpCanvas, 0, 0);
-
+          const wait = frames[fi].delay / SPEED;
+          if(ts - lastTs >= wait){
+            ctx.putImageData(frames[fi].imageData, 0, 0);
             lastTs = ts;
             fi = (fi + 1) % frames.length;
           }
-          requestAnimationFrame(drawFrame);
+          requestAnimationFrame(draw);
         }
-        requestAnimationFrame(drawFrame);
+        requestAnimationFrame(draw);
       })
       .catch(fallback);
   }
 
-  // gifuct-js CDN 로드
+  // omggif CDN 로드
   const s = document.createElement('script');
-  s.src = 'https://cdn.jsdelivr.net/npm/gifuct-js@2.1.2/dist/gifuct-js.min.js';
-  s.onload  = () => startPlayer(window.gifuct || window);
+  s.src = 'https://cdn.jsdelivr.net/npm/omggif@1.0.10/omggif.js';
+  s.onload  = startPlayer;
   s.onerror = fallback;
   document.head.appendChild(s);
 })();
