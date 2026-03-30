@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>에듀마인 인사이트</title>
+<title>에듀마인 인사이트 — 퇴원을 막는 AI 상담 솔루션</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -15,7 +15,7 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;}
 
-/* LOGO SVG */
+/* LOGO */
 .logo-svg{width:36px;height:36px;flex-shrink:0;}
 .logo-wrap{display:flex;align-items:center;gap:10px;}
 .logo-text{display:flex;flex-direction:column;line-height:1.15;}
@@ -27,33 +27,68 @@ nav{position:fixed;top:0;width:100%;z-index:100;padding:12px 5%;display:flex;ali
 .nav-links{display:flex;gap:24px;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;}
 .nav-links a:hover{color:var(--p);}
-.nav-cta{background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;border:none;padding:10px 22px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;}
+.nav-cta{background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;border:none;padding:10px 22px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;}
+.nav-cta:hover{opacity:.88;transform:translateY(-1px);}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 5% 60px;background:linear-gradient(150deg,#3B2F8F,#4B3BC0,#5B4BD0);position:relative;overflow:hidden;}
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 5% 0;background:linear-gradient(150deg,#2A1F70,#3B2F8F,#4B3BC0,#5B4BD0);position:relative;overflow:hidden;}
 .hblob{position:absolute;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;}
-.hb1{width:380px;height:380px;top:-100px;left:-80px;}
-.hb2{width:280px;height:280px;bottom:-60px;right:0;}
+.hb1{width:440px;height:440px;top:-120px;left:-100px;}
+.hb2{width:320px;height:320px;bottom:80px;right:-60px;}
+.hb3{width:200px;height:200px;top:30%;left:5%;}
+
+/* 대시보드 목업 */
+.hero-mockup{position:relative;margin-top:44px;z-index:2;}
+.mockup-frame{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:18px 18px 0 0;padding:12px 16px 0;max-width:780px;margin:0 auto;box-shadow:0 -8px 60px rgba(0,0,0,.25);}
+.mockup-bar{display:flex;gap:6px;margin-bottom:12px;align-items:center;}
+.mockup-dot{width:10px;height:10px;border-radius:50%;}
+.md1{background:#FF5F57;}.md2{background:#FEBC2E;}.md3{background:#28C840;}
+.mockup-url{flex:1;background:rgba(255,255,255,.12);border-radius:6px;height:22px;margin:0 8px;}
+.mockup-inner{background:rgba(255,255,255,.06);border-radius:10px 10px 0 0;padding:18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.mcard{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;}
+.mcard-label{font-size:.62rem;color:rgba(255,255,255,.5);margin-bottom:6px;}
+.mcard-val{font-size:1.3rem;font-weight:900;color:#fff;}
+.mcard-sub{font-size:.6rem;color:rgba(255,255,255,.4);margin-top:2px;}
+.mcard-bar{height:5px;border-radius:3px;margin-top:8px;background:rgba(255,255,255,.12);}
+.mbar-fill{height:100%;border-radius:3px;}
+.mbar-cyan{background:var(--cyan);width:78%;}
+.mbar-pink{background:var(--pink);width:42%;}
+.mbar-green{background:var(--green);width:91%;}
+.mrow{grid-column:1/-1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;display:flex;align-items:center;gap:12px;}
+.mrow-icon{width:34px;height:34px;border-radius:8px;background:rgba(255,105,157,.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.mrow-text{flex:1;}
+.mrow-title{font-size:.75rem;color:rgba(255,255,255,.8);font-weight:700;}
+.mrow-desc{font-size:.65rem;color:rgba(255,255,255,.45);margin-top:2px;}
+.mrow-badge{background:rgba(255,107,107,.2);color:#FF6B6B;font-size:.6rem;font-weight:700;padding:3px 8px;border-radius:50px;white-space:nowrap;}
+
+.hero-content{position:relative;z-index:2;}
 .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 16px;border-radius:50px;font-size:.76rem;font-weight:700;margin-bottom:24px;}
-.hero h1{font-size:clamp(2rem,5vw,3.6rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:18px;}
-.hero h1 em{font-style:normal;border-bottom:4px solid var(--cyan);}
-.hero p{font-size:1rem;color:rgba(255,255,255,.8);max-width:500px;margin:0 auto 36px;line-height:1.85;}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
-.btn-w{background:#fff;color:var(--pd);border:none;padding:14px 32px;border-radius:50px;font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(0,0,0,.2);}
-.btn-w:hover{transform:translateY(-2px);}
-.btn-g{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3);padding:14px 28px;border-radius:50px;font-size:.92rem;font-weight:600;cursor:pointer;font-family:inherit;}
-.stats{display:flex;justify-content:center;gap:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:24px 32px;max-width:680px;margin:0 auto;flex-wrap:wrap;}
+.hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;color:#fff;line-height:1.22;margin-bottom:18px;}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--cyan),#7DF9FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero h1 strong{font-style:normal;border-bottom:4px solid var(--pink);padding-bottom:2px;color:#fff;}
+.hero p{font-size:1.02rem;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 36px;line-height:1.9;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;}
+.btn-primary{background:linear-gradient(135deg,#7B68EE,var(--pd));color:#fff;border:none;padding:16px 36px;border-radius:50px;font-size:.96rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 8px 28px rgba(75,59,192,.5);transition:.2s;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(75,59,192,.6);}
+.btn-g{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3);padding:15px 28px;border-radius:50px;font-size:.92rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s;}
+.btn-g:hover{background:rgba(255,255,255,.2);}
+.stats{display:flex;justify-content:center;gap:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:22px 28px;max-width:680px;margin:0 auto 0;flex-wrap:wrap;}
 .stat{flex:1;min-width:110px;text-align:center;padding:6px 12px;}
 .stat+.stat{border-left:1px solid rgba(255,255,255,.15);}
 .stat-n{font-size:1.8rem;font-weight:900;color:#fff;}
 .stat-l{font-size:.72rem;color:rgba(255,255,255,.65);margin-top:3px;}
 
-/* COMMON SECTION */
+/* COMMON */
 section{padding:88px 5%;}
 .sec-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 13px;border-radius:50px;margin-bottom:12px;}
 .sec-title{text-align:center;margin-bottom:56px;}
 .sec-title h2{font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:900;line-height:1.3;}
 .sec-title p{color:var(--muted);margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.85;font-size:.9rem;}
+
+/* 공통 보라색 CTA 버튼 */
+.sec-cta{text-align:center;margin-top:52px;}
+.btn-purple{display:inline-block;background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;border:none;padding:15px 38px;border-radius:50px;font-size:.94rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 22px rgba(75,59,192,.35);transition:.2s;text-decoration:none;}
+.btn-purple:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(75,59,192,.5);}
 
 /* PAIN */
 .pain{background:#fff;}
@@ -73,10 +108,30 @@ section{padding:88px 5%;}
 .step h3{font-size:.9rem;font-weight:700;margin-bottom:7px;}
 .step p{font-size:.8rem;color:var(--muted);line-height:1.7;}
 
+/* WHY 섹션 */
+.why{background:#fff;}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:980px;margin:0 auto;}
+.why-card{background:var(--bg);border:1.5px solid var(--border);border-radius:22px;padding:36px 30px;text-align:center;transition:.3s;position:relative;overflow:hidden;}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.wc1::before{background:linear-gradient(90deg,var(--pl),var(--pd));}
+.wc2::before{background:linear-gradient(90deg,var(--cyan),#3B82F6);}
+.wc3::before{background:linear-gradient(90deg,var(--pink),var(--orange));}
+.why-card:hover{border-color:var(--pl);transform:translateY(-6px);box-shadow:0 16px 40px rgba(75,59,192,.12);}
+.why-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 22px;}
+.wi1{background:linear-gradient(135deg,#EDE9FF,#D4CEFF);}
+.wi2{background:linear-gradient(135deg,#E0F7F5,#C0EEE9);}
+.wi3{background:linear-gradient(135deg,#FFE8F3,#FFCDE5);}
+.why-card h3{font-size:1.1rem;font-weight:900;margin-bottom:12px;color:var(--txt);}
+.why-card p{font-size:.85rem;color:var(--muted);line-height:1.85;}
+.why-highlight{display:inline-block;margin-top:16px;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:50px;}
+.wh1{background:var(--ps);color:var(--p);}
+.wh2{background:#E0F7F5;color:#007A6E;}
+.wh3{background:#FFE8F3;color:#C0396B;}
+
 /* FEATURES */
-.features{background:#fff;}
+.features{background:var(--bg);}
 .grid5{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;max-width:1080px;margin:0 auto;}
-.fc{background:var(--bg);border:1.5px solid var(--border);border-radius:22px;padding:30px;transition:.3s;position:relative;overflow:hidden;}
+.fc{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:30px;transition:.3s;position:relative;overflow:hidden;}
 .fc:hover{border-color:var(--pl);transform:translateY(-5px);box-shadow:0 14px 36px rgba(75,59,192,.1);}
 .fc-bar{position:absolute;top:0;left:0;right:0;height:3px;}
 .b1{background:linear-gradient(90deg,var(--pl),var(--pd));}
@@ -91,10 +146,10 @@ section{padding:88px 5%;}
 .ftag{display:inline-block;margin-top:13px;font-size:.71rem;font-weight:700;padding:3px 11px;border-radius:50px;background:var(--ps);color:var(--p);}
 
 /* PRICING */
-.pricing{background:var(--bg);}
+.pricing{background:#fff;}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;max-width:940px;margin:0 auto;}
-.pc{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:34px 28px;transition:.3s;position:relative;}
-.pc.hot{border-color:var(--p);box-shadow:0 0 0 4px rgba(75,59,192,.09);}
+.pc{background:var(--bg);border:1.5px solid var(--border);border-radius:22px;padding:34px 28px;transition:.3s;position:relative;}
+.pc.hot{border-color:var(--p);box-shadow:0 0 0 4px rgba(75,59,192,.09);background:#fff;}
 .hot-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;font-size:.71rem;font-weight:700;padding:4px 16px;border-radius:50px;white-space:nowrap;}
 .pname{font-size:.95rem;font-weight:700;margin-bottom:5px;}
 .pdesc{font-size:.8rem;color:var(--muted);margin-bottom:22px;}
@@ -106,18 +161,19 @@ section{padding:88px 5%;}
 .ck{color:var(--green);font-weight:700;flex-shrink:0;}
 .plist li.off{color:#C4C0D8;}
 .plist li.off .ck{color:#D1CDE8;}
-.pbtn{width:100%;padding:12px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:.2s;}
+.pbtn{width:100%;padding:13px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:.2s;}
 .pbtn-free{background:var(--ps);color:var(--p);}
+.pbtn-free:hover{background:#DDD8FF;}
 .pbtn-pro{background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;box-shadow:0 4px 14px rgba(75,59,192,.35);}
 .pbtn-pro:hover{opacity:.9;transform:translateY(-2px);}
 .pbtn-ent{background:#fff;color:var(--txt);border:1.5px solid var(--border);}
 .pbtn-ent:hover{border-color:var(--p);color:var(--p);}
 
 /* TESTIMONIALS */
-.testi{background:#fff;}
+.testi{background:var(--bg);}
 .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;max-width:980px;margin:0 auto;}
-.tc{background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:26px;transition:.3s;}
-.tc:hover{border-color:var(--pl);transform:translateY(-3px);}
+.tc{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:26px;transition:.3s;}
+.tc:hover{border-color:var(--pl);transform:translateY(-3px);box-shadow:0 10px 28px rgba(75,59,192,.08);}
 .stars{color:#FBBF24;font-size:.85rem;margin-bottom:12px;letter-spacing:2px;}
 .tc p{font-size:.85rem;color:var(--txt);line-height:1.8;margin-bottom:20px;}
 .tauthor{display:flex;align-items:center;gap:10px;}
@@ -129,47 +185,73 @@ section{padding:88px 5%;}
 .arole{font-size:.73rem;color:var(--muted);}
 
 /* FAQ */
-.faq{background:var(--bg);}
+.faq{background:#fff;}
 .flist{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:9px;}
-.fi-item{background:#fff;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;transition:.2s;}
+.fi-item{background:var(--bg);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;transition:.2s;}
 .fi-item.open{border-color:var(--pl);}
 .fq{width:100%;padding:18px 22px;background:none;border:none;color:var(--txt);font-size:.88rem;font-weight:700;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;font-family:inherit;}
 .farrow{color:var(--p);font-size:.9rem;transition:.3s;flex-shrink:0;}
 .fi-item.open .farrow{transform:rotate(180deg);}
 .fa{max-height:0;overflow:hidden;transition:.3s ease;}
 .fa-inner{padding:0 22px 18px;font-size:.83rem;color:var(--muted);line-height:1.8;}
-.fi-item.open .fa{max-height:180px;}
+.fi-item.open .fa{max-height:200px;}
 
 /* CTA */
 .cta{background:linear-gradient(135deg,var(--pd),var(--pl));padding:96px 5%;text-align:center;position:relative;overflow:hidden;}
 .cta::before,.cta::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.06);}
-.cta::before{width:360px;height:360px;top:-140px;left:-80px;}
-.cta::after{width:260px;height:260px;bottom:-80px;right:-40px;}
+.cta::before{width:400px;height:400px;top:-160px;left:-100px;}
+.cta::after{width:300px;height:300px;bottom:-100px;right:-50px;}
 .cta h2{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:14px;position:relative;}
 .cta-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:18px 28px;display:inline-block;margin-bottom:28px;position:relative;}
 .cta-card p{font-size:.86rem;color:rgba(255,255,255,.9);line-height:1.7;margin:0;}
 .cta-sub{color:rgba(255,255,255,.75);font-size:.92rem;margin-bottom:32px;line-height:1.8;position:relative;}
 .cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;}
-.cta-inp{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:#fff;padding:13px 20px;border-radius:50px;font-size:.88rem;width:270px;outline:none;font-family:inherit;}
+.cta-inp{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:#fff;padding:14px 22px;border-radius:50px;font-size:.88rem;width:280px;outline:none;font-family:inherit;}
 .cta-inp::placeholder{color:rgba(255,255,255,.55);}
-.cta-inp:focus{border-color:#fff;}
+.cta-inp:focus{border-color:#fff;background:rgba(255,255,255,.2);}
+.btn-cta-white{background:#fff;color:var(--pd);border:none;padding:14px 32px;border-radius:50px;font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:.2s;}
+.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25);}
 
 /* FOOTER */
-footer{background:var(--pd);padding:40px 5%;text-align:center;}
-.ftop{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;}
-.flogo-txt{color:#fff;font-weight:700;font-size:.92rem;}
-footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
-.flinks{display:flex;gap:18px;justify-content:center;margin-top:12px;}
-.flinks a{font-size:.73rem;color:rgba(255,255,255,.4);text-decoration:none;}
-.flinks a:hover{color:rgba(255,255,255,.75);}
+footer{background:#1A1340;padding:52px 5% 32px;}
+.footer-inner{max-width:1080px;margin:0 auto;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.08);}
+.footer-brand{}
+.ftop{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.flogo-txt{color:#fff;font-weight:700;font-size:.96rem;}
+.fbrand-desc{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:260px;margin-top:6px;}
+.fbadge{display:inline-block;margin-top:12px;background:rgba(75,59,192,.4);border:1px solid rgba(108,92,231,.4);color:rgba(255,255,255,.7);font-size:.66rem;font-weight:700;padding:3px 10px;border-radius:50px;}
+.footer-links-wrap{display:flex;gap:48px;flex-wrap:wrap;}
+.flink-group h4{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;}
+.flink-group ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.flink-group a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none;transition:.2s;}
+.flink-group a:hover{color:rgba(255,255,255,.85);}
+.footer-bottom{padding-top:28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.fbiz{font-size:.7rem;color:rgba(255,255,255,.25);line-height:1.9;}
+.fbiz strong{color:rgba(255,255,255,.4);}
+.fcopy{font-size:.72rem;color:rgba(255,255,255,.25);text-align:right;}
+.ftrust{display:flex;gap:10px;margin-top:8px;justify-content:flex-end;flex-wrap:wrap;}
+.ftrust-badge{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:5px 12px;font-size:.66rem;color:rgba(255,255,255,.35);}
 
+/* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 .fu{opacity:0;animation:fadeUp .5s ease forwards;}
-.d1{animation-delay:.1s;}.d2{animation-delay:.2s;}.d3{animation-delay:.3s;}
+.d1{animation-delay:.1s;}.d2{animation-delay:.2s;}.d3{animation-delay:.3s;}.d4{animation-delay:.45s;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
 .fl{animation:float 3.5s ease-in-out infinite;}
 
-@media(max-width:640px){.nav-links{display:none;}.steps::before{display:none;}}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .steps::before{display:none;}
+  .footer-top{flex-direction:column;}
+  .footer-bottom{flex-direction:column;}
+  .fcopy{text-align:left;}
+  .ftrust{justify-content:flex-start;}
+  .mockup-inner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .mockup-inner{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -185,23 +267,25 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
   </div>
   <ul class="nav-links">
     <li><a href="#pain">문제</a></li>
+    <li><a href="#why">왜 에듀마인?</a></li>
     <li><a href="#features">기능</a></li>
     <li><a href="#pricing">요금제</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료로 시작하기</button>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료 체험 시작하기</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hblob hb1"></div>
   <div class="hblob hb2"></div>
-  <div style="position:relative;">
+  <div class="hblob hb3"></div>
+  <div class="hero-content">
     <div class="badge fu">🧠 RAG 기반 AI 학원 상담 솔루션</div>
-    <h1 class="fu d1">상담의 데이터화,<br/><em>학원의 자산</em>이 됩니다</h1>
-    <p class="fu d2">AI 기반 학부모 상담 감정 분석으로<br/>이탈을 방지하고 신뢰를 쌓으세요.</p>
+    <h1 class="fu d1">학부모가 떠나기 전,<br/><em>AI가 먼저 감지합니다</em></h1>
+    <p class="fu d2">퇴원 신호를 실시간으로 포착하고, 원장님의 철학이 담긴<br/>맞춤 스크립트로 학부모의 마음을 되돌리세요.</p>
     <div class="hero-btns fu d3">
-      <button class="btn-w" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">🎉 무료로 시작하기</button>
+      <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">🎉 무료 체험 시작하기</button>
       <button class="btn-g" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">기능 살펴보기 →</button>
     </div>
     <div class="stats fu d3">
@@ -209,6 +293,45 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
       <div class="stat"><div class="stat-n fl" style="animation-delay:.4s">3배</div><div class="stat-l">퇴원율 감소 효과</div></div>
       <div class="stat"><div class="stat-n fl" style="animation-delay:.8s">5분</div><div class="stat-l">AI 상담 뇌 구축</div></div>
       <div class="stat"><div class="stat-n fl" style="animation-delay:1.2s">24/7</div><div class="stat-l">상담 가이드 지원</div></div>
+    </div>
+    <!-- 대시보드 목업 -->
+    <div class="hero-mockup fu d4">
+      <div class="mockup-frame">
+        <div class="mockup-bar">
+          <div class="mockup-dot md1"></div>
+          <div class="mockup-dot md2"></div>
+          <div class="mockup-dot md3"></div>
+          <div class="mockup-url"></div>
+        </div>
+        <div class="mockup-inner">
+          <div class="mcard">
+            <div class="mcard-label">이탈 위험도</div>
+            <div class="mcard-val" style="color:#FF6B6B;">HIGH</div>
+            <div class="mcard-sub">김OO 학부모</div>
+            <div class="mcard-bar"><div class="mbar-fill mbar-pink"></div></div>
+          </div>
+          <div class="mcard">
+            <div class="mcard-label">상담 만족도</div>
+            <div class="mcard-val" style="color:var(--cyan);">91%</div>
+            <div class="mcard-sub">이번 달 평균</div>
+            <div class="mcard-bar"><div class="mbar-fill mbar-cyan"></div></div>
+          </div>
+          <div class="mcard">
+            <div class="mcard-label">퇴원 방어율</div>
+            <div class="mcard-val" style="color:var(--green);">89%</div>
+            <div class="mcard-sub">AI 스크립트 적용 시</div>
+            <div class="mcard-bar"><div class="mbar-fill mbar-green"></div></div>
+          </div>
+          <div class="mrow">
+            <div class="mrow-icon">⚠️</div>
+            <div class="mrow-text">
+              <div class="mrow-title">퇴원 신호 감지 — 박OO 학부모</div>
+              <div class="mrow-desc">"요즘 아이가 흥미를 잃은 것 같아서요..." → 부정 감정 68% 감지</div>
+            </div>
+            <div class="mrow-badge">즉시 대응 필요</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -226,6 +349,41 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
     <div class="pain-card"><div class="pnum">03</div><h3>⏰ 퇴원 신호 포착 실패</h3><p>학부모의 말투에 숨겨진 불만 징후를 감지하지 못해 골든타임을 놓칩니다.</p></div>
     <div class="pain-card"><div class="pnum">04</div><h3>🎭 일관성 없는 대응</h3><p>동일 컴플레인에 강사마다 다르게 대응해 학원 브랜드 신뢰도가 흔들립니다.</p></div>
   </div>
+  <div class="sec-cta">
+    <button class="btn-purple" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료 체험 시작하기 →</button>
+  </div>
+</section>
+
+<!-- WHY 에듀마인 -->
+<section class="why" id="why">
+  <div class="sec-title">
+    <div class="sec-label" style="background:var(--ps);color:var(--p);">💡 왜 에듀마인인가?</div>
+    <h2>다른 솔루션과 결정적으로 다릅니다</h2>
+    <p>단순한 AI 챗봇이 아닙니다. 우리 학원만의 데이터로 움직이는 '상담 두뇌'입니다.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card wc1">
+      <div class="why-icon wi1">🧬</div>
+      <h3>원장님 철학을<br/>AI에 복제합니다</h3>
+      <p>수년간 쌓아온 운영 철학과 모범 상담 사례를 AI가 학습해, 원장님이 자리를 비워도 동일한 수준의 상담이 이루어집니다.</p>
+      <div class="why-highlight wh1">RAG 맞춤 학습</div>
+    </div>
+    <div class="why-card wc2">
+      <div class="why-icon wi2">🕐</div>
+      <h3>24시간<br/>상담 대응 가능</h3>
+      <p>늦은 밤 카카오톡으로 날아오는 학부모 문의도, AI 가이드 덕분에 언제 어디서나 일관된 답변으로 신뢰를 유지합니다.</p>
+      <div class="why-highlight wh2">24/7 가이드 제공</div>
+    </div>
+    <div class="why-card wc3">
+      <div class="why-icon wi3">🚨</div>
+      <h3>퇴원 신호를<br/>골든타임에 포착</h3>
+      <p>학부모 말투의 부정적 감정 변화를 AI가 실시간 분석해, 퇴원 결심이 굳어지기 전에 선제적으로 대응할 수 있습니다.</p>
+      <div class="why-highlight wh3">감정 AI 실시간 분석</div>
+    </div>
+  </div>
+  <div class="sec-cta">
+    <button class="btn-purple" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료 체험 시작하기 →</button>
+  </div>
 </section>
 
 <!-- HOW -->
@@ -239,6 +397,9 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
     <div class="step"><div class="step-n">1</div><h3>지식 베이스 구축</h3><p>운영 매뉴얼, 교육 철학, 모범 상담 사례를 PDF로 업로드합니다.</p></div>
     <div class="step"><div class="step-n">2</div><h3>AI 페르소나 설정</h3><p>공감형·원칙형·대안제시형 중 학원에 맞는 상담 톤을 설정합니다.</p></div>
     <div class="step"><div class="step-n">3</div><h3>상담 분석 & 가이드</h3><p>상담 내용을 입력하면 감정 분석과 맞춤 스크립트를 즉시 받아봅니다.</p></div>
+  </div>
+  <div class="sec-cta">
+    <button class="btn-purple" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -255,6 +416,9 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
     <div class="fc"><div class="fc-bar b3"></div><div class="fi fi3">💬</div><h3>상담 감정 분석 & 요약</h3><p>이탈 위험도·긍정/부정 수치를 즉시 분석하고 핵심 키워드를 자동 추출합니다.</p><div class="ftag">감정 AI 분석</div></div>
     <div class="fc"><div class="fc-bar b4"></div><div class="fi fi4">📝</div><h3>맞춤형 대응 스크립트</h3><p>학습된 매뉴얼 기반으로 상황에 맞는 3종 스크립트를 즉시 생성합니다.</p><div class="ftag">스크립트 생성</div></div>
     <div class="fc"><div class="fc-bar b5"></div><div class="fi fi5">🏢</div><h3>조직 관리 시스템</h3><p>원장-강사 계정 분리로 권한별 접근 관리. 프랜차이즈 멀티 테넌시 지원.</p><div class="ftag">Multi-Tenancy</div></div>
+  </div>
+  <div class="sec-cta">
+    <button class="btn-purple" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -307,6 +471,9 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
       <button class="pbtn pbtn-ent">문의하기 →</button>
     </div>
   </div>
+  <div class="sec-cta">
+    <button class="btn-purple" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료 체험 시작하기 →</button>
+  </div>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -320,6 +487,9 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
     <div class="tc"><div class="stars">★★★★★</div><p>"신입 강사가 저만큼 상담하는 게 가능한지 의심했는데, 실제로 해냈습니다. 공감형 스크립트가 학원 철학을 완벽히 반영해줬어요."</p><div class="tauthor"><div class="av av1">👩</div><div><div class="aname">김미래 원장</div><div class="arole">수학의 봄 학원 | 서울 강남</div></div></div></div>
     <div class="tc"><div class="stars">★★★★★</div><p>"상담이 제일 두려웠는데 감정 분석 덕에 학부모 마음을 먼저 파악하고 대응하니 컴플레인이 눈에 띄게 줄었어요!"</p><div class="tauthor"><div class="av av2">🧑</div><div><div class="aname">박지훈 강사</div><div class="arole">영어 전문 학원 | 경기 분당</div></div></div></div>
     <div class="tc"><div class="stars">★★★★★</div><p>"전국 23개 지점의 상담 퀄리티를 동일하게 유지하는 게 숙원이었는데, 본사 철학이 모든 지점에 일관되게 전달됩니다."</p><div class="tauthor"><div class="av av3">👨‍💼</div><div><div class="aname">이성민 본부장</div><div class="arole">에이스 에듀 프랜차이즈 본사</div></div></div></div>
+  </div>
+  <div class="sec-cta">
+    <button class="btn-purple" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -336,34 +506,83 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.45);}
     <div class="fi-item"><button class="fq" onclick="toggleFaq(this)">업그레이드 시 기존 데이터는 유지되나요? <span class="farrow">▾</span></button><div class="fa"><div class="fa-inner">네, 모든 상담 기록·RAG 문서·설정이 그대로 유지됩니다. 언제든지 업다운그레이드 가능하며 데이터 손실은 없습니다.</div></div></div>
     <div class="fi-item"><button class="fq" onclick="toggleFaq(this)">프랜차이즈 지점별로 다른 설정을 줄 수 있나요? <span class="farrow">▾</span></button><div class="fa"><div class="fa-inner">Enterprise 플랜에서 본사 공통 지식 베이스 기반으로 지점별 맞춤 설정을 추가할 수 있습니다.</div></div></div>
   </div>
+  <div class="sec-cta">
+    <button class="btn-purple" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">무료 체험 시작하기 →</button>
+  </div>
 </section>
 
 <!-- CTA -->
 <section class="cta" id="cta">
-  <h2>오늘 바로 시작해보세요 💙</h2>
+  <h2>퇴원 방어, 오늘부터 시작하세요 💙</h2>
   <div class="cta-card">
     <p>강사님께 드리는 응원 — <strong>오늘 하루도 정말 수고 많으셨습니다.</strong><br/>에듀마인 인사이트와 함께라면 이 상담도 잘 해내실 수 있습니다 ☺</p>
   </div>
   <p class="cta-sub">14일 무료 체험, 신용카드 불필요.<br/>5분 안에 학원만의 AI 상담 파트너를 만드세요.</p>
   <div class="cta-row">
     <input class="cta-inp" type="email" placeholder="학원 이메일 주소를 입력하세요"/>
-    <button class="btn-w">무료로 시작하기 →</button>
+    <button class="btn-cta-white">무료 체험 시작하기 →</button>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="ftop">
-    <img src="logo.png" alt="에듀마인 인사이트 로고" style="width:30px;height:30px;border-radius:8px;"/>
-    <span class="flogo-txt">에듀마인 인사이트</span>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="ftop">
+          <img src="logo.png" alt="에듀마인 인사이트 로고" style="width:32px;height:32px;border-radius:8px;"/>
+          <span class="flogo-txt">에듀마인 인사이트</span>
+        </div>
+        <p class="fbrand-desc">학원 전용 AI 상담 SaaS.<br/>데이터로 읽는 학부모의 마음,<br/>더 정교한 교육 로드맵의 시작.</p>
+        <div class="fbadge">🏫 학원 전용 SaaS</div>
+      </div>
+      <div class="footer-links-wrap">
+        <div class="flink-group">
+          <h4>서비스</h4>
+          <ul>
+            <li><a href="#why">왜 에듀마인?</a></li>
+            <li><a href="#features">핵심 기능</a></li>
+            <li><a href="#pricing">요금제</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="flink-group">
+          <h4>법적 고지</h4>
+          <ul>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">서비스 수준 협약 (SLA)</a></li>
+            <li><a href="#">쿠키 정책</a></li>
+          </ul>
+        </div>
+        <div class="flink-group">
+          <h4>고객지원</h4>
+          <ul>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">도입 문의</a></li>
+            <li><a href="#">카카오채널</a></li>
+            <li><a href="#">블로그</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="fbiz">
+        <strong>에듀마인 인사이트</strong> | 대표: 홍길동<br/>
+        사업자등록번호: 000-00-00000 | 통신판매업신고: 제0000-서울강남-0000호<br/>
+        주소: 서울특별시 강남구 테헤란로 000, 00층 | 이메일: hello@edumind.ai<br/>
+        고객센터: 02-0000-0000 (평일 09:00~18:00, 점심 12:00~13:00 제외)
+      </div>
+      <div>
+        <div class="fcopy">© 2025 에듀마인 인사이트. All rights reserved.</div>
+        <div class="ftrust">
+          <div class="ftrust-badge">🔒 SSL 암호화</div>
+          <div class="ftrust-badge">🛡️ 개인정보 보호</div>
+          <div class="ftrust-badge">☁️ AWS 인프라</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <p>데이터로 읽는 학부모의 마음, 더 정교한 교육 로드맵의 시작.</p>
-  <div class="flinks">
-    <a href="#">개인정보처리방침</a>
-    <a href="#">이용약관</a>
-    <a href="#">고객센터</a>
-  </div>
-  <p style="margin-top:14px;">© 2025 에듀마인 인사이트. All rights reserved.</p>
 </footer>
 
 <script>
@@ -378,7 +597,7 @@ const obs=new IntersectionObserver(entries=>{
     if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
   });
 },{threshold:.1});
-document.querySelectorAll('.pain-card,.fc,.pc,.tc,.step').forEach(el=>{
+document.querySelectorAll('.pain-card,.fc,.pc,.tc,.step,.why-card').forEach(el=>{
   el.style.opacity='0';el.style.transform='translateY(22px)';
   el.style.transition='opacity .5s ease,transform .5s ease';
   obs.observe(el);
