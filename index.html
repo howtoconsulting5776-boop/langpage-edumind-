@@ -159,20 +159,27 @@ section{padding:88px 5%;}
 
 /* FEATURES */
 .features{background:var(--bg);}
-.grid5{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;max-width:1080px;margin:0 auto;}
-.fc{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:30px;transition:.3s;position:relative;overflow:hidden;}
+.grid5{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1060px;margin:0 auto;}
+.fc-wide{grid-column:1/-1;}
+.fc{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:32px 28px 26px;transition:.3s;position:relative;overflow:hidden;}
 .fc:hover{border-color:var(--pl);transform:translateY(-5px);box-shadow:0 14px 36px rgba(75,59,192,.1);}
-.fc-bar{position:absolute;top:0;left:0;right:0;height:3px;}
-.b1{background:linear-gradient(90deg,var(--pl),var(--pd));}
-.b2{background:linear-gradient(90deg,var(--cyan),#3B82F6);}
-.b3{background:linear-gradient(90deg,var(--pink),var(--pl));}
-.b4{background:linear-gradient(90deg,var(--orange),var(--pink));}
-.b5{background:linear-gradient(90deg,var(--green),var(--cyan));}
-.fi{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;margin-top:6px;}
-.fi1{background:#EDE9FF;}.fi2{background:#E0F7F5;}.fi3{background:#FFE8F3;}.fi4{background:#FFF0E6;}.fi5{background:#E0FAF1;}
-.fc h3{font-size:1rem;font-weight:700;margin-bottom:9px;}
-.fc p{font-size:.83rem;color:var(--muted);line-height:1.75;}
-.ftag{display:inline-block;margin-top:13px;font-size:.71rem;font-weight:700;padding:3px 11px;border-radius:50px;background:var(--ps);color:var(--p);}
+.fc-bar{position:absolute;top:0;left:0;right:0;height:4px;}
+.b1{background:linear-gradient(90deg,#7C3AED,#4B3BC0);}
+.b2{background:linear-gradient(90deg,#06B6D4,#3B82F6);}
+.b3{background:linear-gradient(90deg,#EC4899,#8B5CF6);}
+.b4{background:linear-gradient(90deg,#F97316,#EC4899);}
+.b5{background:linear-gradient(90deg,#10B981,#06B6D4);}
+.fi{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px;margin-top:6px;}
+.fi1{background:#EDE9FF;}.fi2{background:#E0F7F5;}.fi3{background:#FFE8F3;}.fi4{background:#FFF0E6;}.fi5{background:#D1FAE5;}
+.fc h3{font-size:1.05rem;font-weight:900;margin-bottom:10px;line-height:1.35;color:var(--txt);}
+.fc p{font-size:.84rem;color:var(--muted);line-height:1.8;}
+.ftag{display:inline-block;margin-top:14px;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:50px;background:#EBEBF5;color:#4B3BC0;letter-spacing:.01em;}
+.fc-wide .fc-inner{display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;}
+.fc-wide .fi{flex-shrink:0;width:56px;height:56px;font-size:1.6rem;}
+.fc-wide .fc-txt{flex:1;min-width:200px;}
+.fc-wide h3{font-size:1.15rem;}
+.fc-wide .fc-extra{margin-top:10px;font-size:.8rem;font-weight:700;color:var(--p);background:var(--ps);display:inline-block;padding:5px 14px;border-radius:50px;}
+@media(max-width:768px){.grid5{grid-template-columns:1fr;}.fc-wide{grid-column:auto;}}
 
 /* PRICING */
 .pricing{background:#fff;}
@@ -523,16 +530,50 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 <!-- FEATURES -->
 <section class="features" id="features">
   <div class="sec-title">
-    <div class="sec-label" style="background:var(--ps);color:var(--p);">✨ 핵심 기능</div>
-    <h2>우리 학원만의 '상담 뇌'를 구축하세요</h2>
-    <p>단순한 AI 채팅이 아닌, 학원 고유의 데이터로 작동하는 RAG 기반 솔루션입니다.</p>
+    <h2>기능을 넘어 결과로 증명하는<br>에듀마인의 독보적 기술력</h2>
+    <p>단순한 챗봇이 아닙니다. 원장님의 전문성을 시스템화하는 가장 정교한 솔루션입니다.</p>
   </div>
   <div class="grid5">
-    <div class="fc"><div class="fc-bar b1"></div><div class="fi fi1">📚</div><h3>맞춤형 RAG 지식 베이스</h3><p>운영 매뉴얼·교육 철학·모범 사례를 파일로 학습시켜 우리 학원만의 AI를 만듭니다.</p><div class="ftag">RAG 기술</div></div>
-    <div class="fc"><div class="fc-bar b2"></div><div class="fi fi2">🎭</div><h3>AI 페르소나 설정</h3><p>공감형, 원칙형, 대안제시형 등 원장님의 말투로 상담 가이드를 제공합니다.</p><div class="ftag">맞춤 페르소나</div></div>
-    <div class="fc"><div class="fc-bar b3"></div><div class="fi fi3">💬</div><h3>상담 감정 분석 & 요약</h3><p>이탈 위험도·긍정/부정 수치를 즉시 분석하고 핵심 키워드를 자동 추출합니다.</p><div class="ftag">감정 AI 분석</div></div>
-    <div class="fc"><div class="fc-bar b4"></div><div class="fi fi4">📝</div><h3>맞춤형 대응 스크립트</h3><p>학습된 매뉴얼 기반으로 상황에 맞는 3종 스크립트를 즉시 생성합니다.</p><div class="ftag">스크립트 생성</div></div>
-    <div class="fc"><div class="fc-bar b5"></div><div class="fi fi5">🏢</div><h3>조직 관리 시스템</h3><p>원장-강사 계정 분리로 권한별 접근 관리. 프랜차이즈 멀티 테넌시 지원.</p><div class="ftag">Multi-Tenancy</div></div>
+    <div class="fc">
+      <div class="fc-bar b1"></div>
+      <div class="fi fi1">📚</div>
+      <h3>우리 학원 전용<br>상담 지식 저장소</h3>
+      <p>학원의 철학과 성공 사례를 담은 원장님만의 상담 AI를 만듭니다.</p>
+      <div class="ftag">전용 지식 학습</div>
+    </div>
+    <div class="fc">
+      <div class="fc-bar b2"></div>
+      <div class="fi fi2">🎭</div>
+      <h3>원장님 말투를 닮은<br>상담 페르소나</h3>
+      <p>우리 학원의 분위기에 딱 맞는 상담 톤으로 학부모에게 신뢰를 줍니다.</p>
+      <div class="ftag">맞춤 페르소나</div>
+    </div>
+    <div class="fc">
+      <div class="fc-bar b3"></div>
+      <div class="fi fi3">💬</div>
+      <h3>마음을 꿰뚫어보는<br>AI 감정 리포트</h3>
+      <p>학부모의 이탈 위험도와 숨은 의도를 분석해 대응 전략을 제시합니다.</p>
+      <div class="ftag">감정 AI 분석</div>
+    </div>
+    <div class="fc">
+      <div class="fc-bar b4"></div>
+      <div class="fi fi4">📝</div>
+      <h3>3초 만에 완성하는<br>상황별 맞춤 답장</h3>
+      <p>매뉴얼 기반의 최적화된 스크립트로 상담 준비 시간을 혁신적으로 줄입니다.</p>
+      <div class="ftag">스크립트 즉시 생성</div>
+    </div>
+    <div class="fc fc-wide">
+      <div class="fc-bar b5"></div>
+      <div class="fc-inner">
+        <div class="fi fi5">🏢</div>
+        <div class="fc-txt">
+          <h3>전 지점 일관된<br>상담 품질 관리</h3>
+          <p>지점이 늘어나도 원장님의 전문성이 모든 곳에서 동일하게 구현됩니다.<br>원장-강사 권한 분리로 체계적인 조직 관리까지 한 번에 가능합니다.</p>
+          <div class="ftag">통합 조직 관리</div>
+          <div class="fc-extra">🏆 프랜차이즈 본사 전용 대시보드 지원</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="sec-cta">
     <button class="btn-purple" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">무료 체험 시작하기 →</button>
