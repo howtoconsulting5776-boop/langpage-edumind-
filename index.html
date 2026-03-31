@@ -44,11 +44,14 @@ nav{position:fixed;top:0;width:100%;z-index:100;padding:12px 5%;display:flex;ali
 
 .hero-content{position:relative;z-index:2;}
 .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 16px;border-radius:50px;font-size:.76rem;font-weight:700;margin-bottom:24px;}
-.hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;color:#fff;line-height:1.22;margin-bottom:18px;}
+.hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;color:#fff;line-height:1.4;margin-bottom:18px;letter-spacing:-0.02em;}
 .hero h1 em{font-style:normal;border-bottom:4px solid var(--cyan);padding-bottom:2px;color:#fff;}
 .hero h1 strong{font-style:normal;border-bottom:4px solid var(--pink);padding-bottom:2px;color:#fff;}
-.hero p{font-size:1.02rem;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 36px;line-height:1.9;}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;}
+.hero p{font-size:1.02rem;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto 36px;line-height:1.4;letter-spacing:-0.02em;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
+.hero-proof{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:20px;margin-bottom:36px;}
+.hero-proof span{font-size:.85rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:5px;}
+.hero-proof span b{color:rgba(255,255,255,.9);font-weight:700;}
 .btn-primary{background:linear-gradient(135deg,#7B68EE,var(--pd));color:#fff;border:none;padding:16px 36px;border-radius:50px;font-size:.96rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 8px 28px rgba(75,59,192,.5);transition:.2s;}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(75,59,192,.6);}
 .btn-g{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3);padding:15px 28px;border-radius:50px;font-size:.92rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s;}
@@ -265,11 +268,16 @@ footer{background:#1A1340;padding:52px 5% 32px;}
   <div class="hblob hb3"></div>
   <div class="hero-content">
     <div class="badge fu">🧠 RAG 기반 AI 학원 상담 솔루션</div>
-    <h1 class="fu d1">상담의 데이터화,<br/><em>학원의 자산</em>이 됩니다</h1>
-    <p class="fu d2">퇴원 신호를 실시간으로 포착하고, 원장님의 철학이 담긴<br/>맞춤 스크립트로 학부모의 마음을 되돌리세요.</p>
+    <h1 class="fu d1">퇴원하는 학부모,<br/><em>AI로 되돌리세요</em></h1>
+    <p class="fu d2">학원 상담 데이터를 분석해 이탈 징후를 사전에 포착하고, 원장님의 철학이 담긴 최적의 대응으로 학부모의 신뢰를 회복합니다.</p>
     <div class="hero-btns fu d3">
       <button class="btn-primary" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">🎉 무료 체험 시작하기</button>
       <button class="btn-g" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">기능 살펴보기 →</button>
+    </div>
+    <div class="hero-proof fu d3">
+      <span><b>✔</b> 50+ 학원 도입</span>
+      <span><b>✔</b> 평균 퇴원율 30% 감소</span>
+      <span><b>✔</b> 상담 효율 3배 증가</span>
     </div>
     <div class="stats fu d3">
       <div class="stat">
