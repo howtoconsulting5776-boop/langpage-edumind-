@@ -4,6 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>에듀마인 인사이트 — 퇴원을 막는 AI 상담 솔루션</title>
+<!-- GA4_TRACKING_CODE_HERE -->
+<!-- 아래 G-XXXXXXXXXX를 실제 측정 ID로 교체하세요 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -306,7 +315,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     <li><a href="#pricing">요금제</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <button class="nav-cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기</button>
+  <button class="nav-cta" data-cta="nav_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기</button>
 </nav>
 
 <!-- HERO -->
@@ -323,7 +332,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 
     <p class="hero-desc fu d2">원장님의 철학이 담긴 데이터 분석으로 학부모의 신뢰를 회복합니다.</p>
     <div class="hero-btns fu d3">
-      <button class="btn-primary" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">🎉 무료 체험 시작하기</button>
+      <button class="btn-primary" data-cta="hero_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">🎉 무료 체험 시작하기</button>
       <button class="btn-g" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">기능 살펴보기 →</button>
     </div>
     <div class="hero-proof fu d3">
@@ -456,7 +465,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 
   </div>
   <div class="sec-cta">
-    <button class="btn-purple" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+    <button class="btn-purple" data-cta="cardnews_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -487,7 +496,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     </div>
   </div>
   <div class="sec-cta">
-    <button class="btn-purple" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+    <button class="btn-purple" data-cta="why_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -524,7 +533,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     </div>
   </div>
   <div class="sec-cta">
-    <button class="btn-purple" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+    <button class="btn-purple" data-cta="how_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -573,7 +582,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     </div>
   </div>
   <div class="sec-cta">
-    <button class="btn-purple" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+    <button class="btn-purple" data-cta="features_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -597,7 +606,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
         <li class="off"><span class="ck">✕</span>퇴원 예측 분석</li>
         <li class="off"><span class="ck">✕</span>조직 관리 시스템</li>
       </ul>
-      <button class="pbtn pbtn-free" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료로 시작하기</button>
+      <button class="pbtn pbtn-free" data-cta="pricing_free" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료로 시작하기</button>
     </div>
     <div class="pc hot">
       <div class="hot-badge">🔥 가장 인기</div>
@@ -615,7 +624,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
         <li><span class="ck">✓</span><strong>맞춤 페르소나</strong> 설정</li>
         <li><span class="ck">✓</span>상담 리포트 & 통계</li>
       </ul>
-      <button class="pbtn pbtn-pro" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">14일 무료 체험 시작 →</button>
+      <button class="pbtn pbtn-pro" data-cta="pricing_pro" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">14일 무료 체험 시작 →</button>
     </div>
     <div class="pc">
       <div class="pname">Enterprise</div><div class="pdesc">프랜차이즈 & 대형 법인</div>
@@ -628,11 +637,11 @@ footer{background:#1A1340;padding:52px 5% 32px;}
         <li><span class="ck">✓</span>전 지점 통합 대시보드</li>
         <li><span class="ck">✓</span>전담 CS 매니저 & SLA 보장</li>
       </ul>
-      <button class="pbtn pbtn-ent" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">도입 문의하기 →</button>
+      <button class="pbtn pbtn-ent" data-cta="pricing_enterprise" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">도입 문의하기 →</button>
     </div>
   </div>
   <div class="sec-cta">
-    <button class="btn-purple" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+    <button class="btn-purple" data-cta="pricing_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -649,7 +658,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     <div class="tc"><div class="stars">★★★★★</div><p>"전국 23개 지점의 상담 퀄리티를 동일하게 유지하는 게 숙원이었는데, 본사 철학이 모든 지점에 일관되게 전달됩니다."</p><div class="tauthor"><div class="av av3">👨‍💼</div><div><div class="aname">이성민 본부장</div><div class="arole">에이스 에듀 프랜차이즈 본사</div></div></div></div>
   </div>
   <div class="sec-cta">
-    <button class="btn-purple" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+    <button class="btn-purple" data-cta="testi_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -667,7 +676,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     <div class="fi-item"><button class="fq" onclick="toggleFaq(this)">프랜차이즈 지점별로 다른 설정을 줄 수 있나요? <span class="farrow">▾</span></button><div class="fa"><div class="fa-inner">Enterprise 플랜에서 본사 공통 지식 베이스 기반으로 지점별 맞춤 설정을 추가할 수 있습니다.</div></div></div>
   </div>
   <div class="sec-cta">
-    <button class="btn-purple" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+    <button class="btn-purple" data-cta="faq_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험 시작하기 →</button>
   </div>
 </section>
 
@@ -678,7 +687,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     <p>상담 전화 한 통을 걸기 전, 크게 숨을 고르던 원장님의 마음을 잘 압니다.<br>학부모님의 무거운 목소리를 견뎌내느라 오늘 하루도 정말 수고 많으셨습니다.<br>에듀마인은 원장님의 진심이 오해받지 않고 온전히 닿도록 돕는 든든한 파트너가 되겠습니다.</p>
   </div>
   <div class="cta-row">
-    <button class="btn-cta-white" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험으로 마음의 짐 덜어보기 →</button>
+    <button class="btn-cta-white" data-cta="bottom_cta" onclick="window.open('https://sentimentanalyzer-nine.vercel.app/','_blank')">무료 체험으로 마음의 짐 덜어보기 →</button>
   </div>
 </section>
 
@@ -839,6 +848,39 @@ document.querySelectorAll('.pain-card,.fc,.pc,.tc,.step,.why-card').forEach(el=>
   el.style.transition='opacity .5s ease,transform .5s ease';
   obs.observe(el);
 });
+
+// ── GA4 CTA 클릭 이벤트 추적 ──
+function sendGA4Event(eventName, params){
+  if(typeof gtag === 'function') gtag('event', eventName, params);
+}
+document.querySelectorAll('[data-cta]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var label = this.getAttribute('data-cta');
+    sendGA4Event('cta_click', {
+      cta_location: label,
+      page_title: document.title
+    });
+  });
+});
+
+// ── 스크롤 깊이 추적 (50%, 80%) ──
+(function(){
+  var milestones = {50: false, 80: false};
+  function getScrollPct(){
+    var scrolled = window.scrollY + window.innerHeight;
+    var total = document.documentElement.scrollHeight;
+    return Math.round(scrolled / total * 100);
+  }
+  window.addEventListener('scroll', function(){
+    var pct = getScrollPct();
+    [50, 80].forEach(function(m){
+      if(!milestones[m] && pct >= m){
+        milestones[m] = true;
+        sendGA4Event('scroll_depth', {depth_percent: m, page_title: document.title});
+      }
+    });
+  }, {passive: true});
+})();
 </script>
 </body>
 </html>
