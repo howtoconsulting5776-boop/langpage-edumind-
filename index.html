@@ -233,15 +233,11 @@ section{padding:88px 5%;}
 .cta::before{width:400px;height:400px;top:-160px;left:-100px;}
 .cta::after{width:300px;height:300px;bottom:-100px;right:-50px;}
 .cta h2{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:14px;position:relative;}
-.cta-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:18px 28px;display:inline-block;margin-bottom:28px;position:relative;}
-.cta-card p{font-size:.86rem;color:rgba(255,255,255,.9);line-height:1.7;margin:0;}
-.cta-sub{color:rgba(255,255,255,.75);font-size:.92rem;margin-bottom:32px;line-height:1.8;position:relative;}
+.cta-card{background:rgba(255,255,255,.08);border:none;border-radius:20px;padding:32px 40px;display:inline-block;margin-bottom:36px;position:relative;max-width:680px;}
+.cta-card p{font-size:.96rem;color:rgba(255,255,255,.92);line-height:2;margin:0;letter-spacing:.01em;}
 .cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;}
-.cta-inp{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:#fff;padding:14px 22px;border-radius:50px;font-size:.88rem;width:280px;outline:none;font-family:inherit;}
-.cta-inp::placeholder{color:rgba(255,255,255,.55);}
-.cta-inp:focus{border-color:#fff;background:rgba(255,255,255,.2);}
-.btn-cta-white{background:#fff;color:var(--pd);border:none;padding:14px 32px;border-radius:50px;font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:.2s;}
-.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25);}
+.btn-cta-white{background:#fff;color:var(--pd);border:none;padding:17px 42px;border-radius:50px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:.2s;letter-spacing:-.01em;}
+.btn-cta-white:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.28);}
 
 /* FOOTER */
 footer{background:#1A1340;padding:52px 5% 32px;}
@@ -666,14 +662,12 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 
 <!-- CTA -->
 <section class="cta" id="cta">
-  <h2>퇴원 방어, 오늘부터 시작하세요 💙</h2>
+  <h2>혼자 견디지 마세요,<br>에듀마인이 함께 걷겠습니다 💙</h2>
   <div class="cta-card">
-    <p>강사님께 드리는 응원 — <strong>오늘 하루도 정말 수고 많으셨습니다.</strong><br/>에듀마인 인사이트와 함께라면 이 상담도 잘 해내실 수 있습니다 ☺</p>
+    <p>상담 전화 한 통을 걸기 전, 크게 숨을 고르던 원장님의 마음을 잘 압니다.<br>학부모님의 무거운 목소리를 견뎌내느라 오늘 하루도 정말 수고 많으셨습니다.<br>에듀마인은 원장님의 진심이 오해받지 않고 온전히 닿도록 돕는 든든한 파트너가 되겠습니다.</p>
   </div>
-  <p class="cta-sub">14일 무료 체험, 신용카드 불필요.<br/>5분 안에 학원만의 AI 상담 파트너를 만드세요.</p>
   <div class="cta-row">
-    <input class="cta-inp" type="email" placeholder="학원 이메일 주소를 입력하세요"/>
-    <button class="btn-cta-white" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+    <button class="btn-cta-white" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">무료 체험으로 마음의 짐 덜어보기 →</button>
   </div>
 </section>
 
