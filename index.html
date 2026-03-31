@@ -114,13 +114,22 @@ section{padding:88px 5%;}
 @media(max-width:768px){.grid4{grid-template-columns:1fr;}}
 
 /* HOW */
-.how{background:var(--bg);}
-.steps{display:flex;gap:0;max-width:860px;margin:0 auto;position:relative;flex-wrap:wrap;}
-.steps::before{content:'';position:absolute;top:30px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--pl),var(--cyan));}
-.step{flex:1;min-width:160px;text-align:center;padding:0 16px;}
-.step-n{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;font-weight:900;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;position:relative;z-index:1;box-shadow:0 4px 18px rgba(75,59,192,.3);}
-.step h3{font-size:.9rem;font-weight:700;margin-bottom:7px;}
-.step p{font-size:.8rem;color:var(--muted);line-height:1.7;}
+.how{background:#f5f6fa;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1000px;margin:0 auto;}
+.step{display:flex;align-items:stretch;position:relative;filter:drop-shadow(0 12px 18px rgba(0,0,0,.10));}
+.step-num{font-size:5.5rem;font-weight:900;line-height:1;letter-spacing:-.04em;display:flex;align-items:center;padding:0 6px 0 4px;flex-shrink:0;user-select:none;}
+.s1 .step-num{color:#E53935;}
+.s2 .step-num{color:#FB8C00;}
+.s3 .step-num{color:#43A047;}
+.step-body{background:#fff;border-radius:0 22px 22px 0;padding:26px 22px 22px;flex:1;display:flex;flex-direction:column;gap:6px;}
+.s1 .step-body{border-top:4px solid #E53935;border-right:4px solid #E53935;border-bottom:4px solid #E53935;}
+.s2 .step-body{border-top:4px solid #FB8C00;border-right:4px solid #FB8C00;border-bottom:4px solid #FB8C00;}
+.s3 .step-body{border-top:4px solid #43A047;border-right:4px solid #43A047;border-bottom:4px solid #43A047;}
+.step-icon{font-size:1.6rem;line-height:1;margin-bottom:2px;}
+.step h3{font-size:1rem;font-weight:900;color:#1e1e2e;margin:0;line-height:1.3;}
+.step p{font-size:.83rem;color:var(--muted);line-height:1.75;margin:0;}
+.step::after{content:'';display:block;position:absolute;bottom:-14px;left:10%;right:10%;height:14px;background:inherit;filter:blur(6px) opacity(.25);transform:scaleY(-1);pointer-events:none;}
+@media(max-width:768px){.steps{grid-template-columns:1fr;gap:22px;}}
 
 /* WHY 섹션 */
 .why{background:#fff;}
@@ -263,7 +272,6 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 
 @media(max-width:768px){
   .nav-links{display:none;}
-  .steps::before{display:none;}
   .footer-top{flex-direction:column;}
   .footer-bottom{flex-direction:column;}
   .fcopy{text-align:left;}
@@ -478,14 +486,34 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 <!-- HOW -->
 <section class="how">
   <div class="sec-title">
-    <div class="sec-label" style="background:#E0F7F5;color:#007A6E;">⚡ 작동 방식</div>
     <h2>3단계로 시작하는 AI 상담</h2>
     <p>복잡한 설정 없이 5분 안에 학원만의 AI 상담 파트너를 만들 수 있습니다.</p>
   </div>
   <div class="steps">
-    <div class="step"><div class="step-n">1</div><h3>지식 베이스 구축</h3><p>운영 매뉴얼, 교육 철학, 모범 상담 사례를 PDF로 업로드합니다.</p></div>
-    <div class="step"><div class="step-n">2</div><h3>AI 페르소나 설정</h3><p>공감형·원칙형·대안제시형 중 학원에 맞는 상담 톤을 설정합니다.</p></div>
-    <div class="step"><div class="step-n">3</div><h3>상담 분석 & 가이드</h3><p>상담 내용을 입력하면 감정 분석과 맞춤 스크립트를 즉시 받아봅니다.</p></div>
+    <div class="step s1">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-icon">📄</div>
+        <h3>학원 매뉴얼 업로드</h3>
+        <p>운영 매뉴얼이나 상담 사례 PDF를 올려주세요. AI가 3초 만에 학습합니다.</p>
+      </div>
+    </div>
+    <div class="step s2">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-icon">🎭</div>
+        <h3>상담 스타일 선택</h3>
+        <p>공감형, 원칙형 등 우리 학원의 분위기에 딱 맞는 상담 톤을 설정하세요.</p>
+      </div>
+    </div>
+    <div class="step s3">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-icon">✨</div>
+        <h3>맞춤 스크립트 생성</h3>
+        <p>상담 내용을 입력하면 즉시 감정을 분석하고 최적의 대응안을 드립니다.</p>
+      </div>
+    </div>
   </div>
   <div class="sec-cta">
     <button class="btn-purple" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">무료 체험 시작하기 →</button>
