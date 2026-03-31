@@ -86,9 +86,10 @@ section{padding:88px 5%;}
 .cardnews .sec-title .sec-label{background:rgba(108,92,231,.35);color:rgba(255,255,255,.8);}
 .cardnews .sec-title h2{color:#fff;}
 .cardnews .sec-title p{color:rgba(255,255,255,.55);}
-.cn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1080px;margin:0 auto;}
-.cn-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:30px 28px 24px;position:relative;overflow:hidden;transition:.3s;}
+.cn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto;align-items:stretch;}
+.cn-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 30px 28px;position:relative;overflow:hidden;transition:.3s;height:100%;}
 .cn-card:hover{background:rgba(255,255,255,.1);transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+@media(max-width:768px){.cn-grid{grid-template-columns:1fr;}}
 .cn-bar{position:absolute;top:0;left:0;right:0;height:3px;}
 .cn-icon{font-size:2rem;margin-bottom:12px;}
 .cn-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);padding:3px 10px;border-radius:50px;margin-bottom:14px;}
@@ -394,7 +395,6 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 <!-- 카드뉴스: 공감 카피 -->
 <section class="cardnews" id="cardnews">
   <div class="sec-title">
-    <div class="sec-label" style="background:var(--ps);color:var(--p);">💬 공감하시나요?</div>
     <h2>학원 원장님들의 진짜 고민,<br/>에듀마인이 해결합니다</h2>
     <p>수백 명의 원장님·강사님과 나눈 이야기에서 뽑은 가장 솔직한 현장의 언어입니다.</p>
   </div>
