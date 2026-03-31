@@ -159,9 +159,8 @@ section{padding:88px 5%;}
 
 /* FEATURES */
 .features{background:var(--bg);}
-.grid5{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1060px;margin:0 auto;}
-.fc-wide{grid-column:1/-1;}
-.fc{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:32px 28px 26px;transition:.3s;position:relative;overflow:hidden;}
+.grid5{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;max-width:1060px;margin:0 auto;}
+.fc{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:32px 28px 26px;transition:.3s;position:relative;overflow:hidden;flex:0 0 calc(33.33% - 16px);}
 .fc:hover{border-color:var(--pl);transform:translateY(-5px);box-shadow:0 14px 36px rgba(75,59,192,.1);}
 .fc-bar{position:absolute;top:0;left:0;right:0;height:4px;}
 .b1{background:linear-gradient(90deg,#7C3AED,#4B3BC0);}
@@ -173,13 +172,8 @@ section{padding:88px 5%;}
 .fi1{background:#EDE9FF;}.fi2{background:#E0F7F5;}.fi3{background:#FFE8F3;}.fi4{background:#FFF0E6;}.fi5{background:#D1FAE5;}
 .fc h3{font-size:1.05rem;font-weight:900;margin-bottom:10px;line-height:1.35;color:var(--txt);}
 .fc p{font-size:.84rem;color:var(--muted);line-height:1.8;}
-.ftag{display:inline-block;margin-top:14px;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:50px;background:#EBEBF5;color:#4B3BC0;letter-spacing:.01em;}
-.fc-wide .fc-inner{display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;}
-.fc-wide .fi{flex-shrink:0;width:56px;height:56px;font-size:1.6rem;}
-.fc-wide .fc-txt{flex:1;min-width:200px;}
-.fc-wide h3{font-size:1.15rem;}
-.fc-wide .fc-extra{margin-top:10px;font-size:.8rem;font-weight:700;color:var(--p);background:var(--ps);display:inline-block;padding:5px 14px;border-radius:50px;}
-@media(max-width:768px){.grid5{grid-template-columns:1fr;}.fc-wide{grid-column:auto;}}
+.ftag{display:inline-block;margin-top:10px;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:50px;background:#EBEBF5;color:#4B3BC0;letter-spacing:.01em;margin-right:6px;}
+@media(max-width:768px){.fc{flex:0 0 100%;}}
 
 /* PRICING */
 .pricing{background:#fff;}
@@ -562,17 +556,13 @@ footer{background:#1A1340;padding:52px 5% 32px;}
       <p>매뉴얼 기반의 최적화된 스크립트로 상담 준비 시간을 혁신적으로 줄입니다.</p>
       <div class="ftag">스크립트 즉시 생성</div>
     </div>
-    <div class="fc fc-wide">
+    <div class="fc">
       <div class="fc-bar b5"></div>
-      <div class="fc-inner">
-        <div class="fi fi5">🏢</div>
-        <div class="fc-txt">
-          <h3>전 지점 일관된<br>상담 품질 관리</h3>
-          <p>지점이 늘어나도 원장님의 전문성이 모든 곳에서 동일하게 구현됩니다.<br>원장-강사 권한 분리로 체계적인 조직 관리까지 한 번에 가능합니다.</p>
-          <div class="ftag">통합 조직 관리</div>
-          <div class="fc-extra">🏆 프랜차이즈 본사 전용 대시보드 지원</div>
-        </div>
-      </div>
+      <div class="fi fi5">🏢</div>
+      <h3>전 지점 일관된<br>상담 품질 관리</h3>
+      <p>강사가 늘어나도 원장님의 전문성이 모든 곳에서 동일하게 구현됩니다.</p>
+      <div class="ftag">통합 조직 관리</div>
+      <div class="ftag">본사 대시보드</div>
     </div>
   </div>
   <div class="sec-cta">
