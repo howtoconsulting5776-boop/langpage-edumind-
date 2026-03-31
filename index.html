@@ -101,11 +101,16 @@ section{padding:88px 5%;}
 /* PAIN */
 .pain{background:#fff;}
 .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;max-width:1080px;margin:0 auto;}
-.pain-card{background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:28px;transition:.3s;}
-.pain-card:hover{border-color:var(--pl);transform:translateY(-4px);box-shadow:0 10px 28px rgba(75,59,192,.1);}
-.pnum{width:34px;height:34px;border-radius:9px;background:var(--ps);color:var(--p);font-weight:900;font-size:.88rem;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.pain-card h3{font-size:.95rem;font-weight:700;margin-bottom:8px;}
-.pain-card p{font-size:.83rem;color:var(--muted);line-height:1.75;}
+.pain-card{background:var(--ps);border:none;border-radius:18px;padding:30px;transition:.3s;position:relative;overflow:hidden;}
+.pain-card::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--pl),var(--pd));}
+.pain-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(75,59,192,.13);}
+.pnum{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;font-weight:900;font-size:.82rem;display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0;}
+.pain-card h3{font-size:1.15rem;font-weight:900;margin-bottom:10px;color:var(--txt);line-height:1.35;}
+.pain-card p{font-size:.9rem;color:var(--muted);line-height:1.8;}
+.pain-next{text-align:center;margin-top:40px;}
+.pain-next a{font-size:.88rem;color:var(--p);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--border);padding-bottom:2px;transition:.2s;}
+.pain-next a:hover{border-color:var(--p);}
+@media(max-width:768px){.grid4{grid-template-columns:1fr;}}
 
 /* HOW */
 .how{background:var(--bg);}
@@ -356,18 +361,33 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 <!-- PAIN -->
 <section class="pain" id="pain">
   <div class="sec-title">
-    <div class="sec-label" style="background:#FFE8F3;color:#C0396B;">😰 학원 현장의 문제</div>
     <h2>이런 상황, 겪어본 적 있으신가요?</h2>
     <p>현장에서 반복되는 4가지 고질적인 상담 문제, 에듀마인 인사이트가 해결합니다.</p>
   </div>
   <div class="grid4">
-    <div class="pain-card"><div class="pnum">01</div><h3>💨 휘발되는 상담 데이터</h3><p>학부모와 나눈 대화가 단순 메모로 끝나거나 기록되지 않아 체계적 관리가 불가능합니다.</p></div>
-    <div class="pain-card"><div class="pnum">02</div><h3>📊 상담 역량의 불균형</h3><p>원장님만큼 학원 철학을 이해하는 강사가 부족해 상담 결과가 개인 역량에만 의존합니다.</p></div>
-    <div class="pain-card"><div class="pnum">03</div><h3>⏰ 퇴원 신호 포착 실패</h3><p>학부모의 말투에 숨겨진 불만 징후를 감지하지 못해 골든타임을 놓칩니다.</p></div>
-    <div class="pain-card"><div class="pnum">04</div><h3>🎭 일관성 없는 대응</h3><p>동일 컴플레인에 강사마다 다르게 대응해 학원 브랜드 신뢰도가 흔들립니다.</p></div>
+    <div class="pain-card">
+      <div class="pnum">01</div>
+      <h3>기록 없는 상담은 '0'원</h3>
+      <p>기록되지 않은 상담은 학원의 자산이 되지 못하고 그대로 사라집니다.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pnum">02</div>
+      <h3>원장님 없으면 멈추는 상담</h3>
+      <p>강사마다 다른 상담 실력, 결국 모든 상담이 원장님 한 명에게만 집중됩니다.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pnum">03</div>
+      <h3>놓치고 후회하는 '퇴원 시그널'</h3>
+      <p>학부모의 말투에 숨겨진 미세한 불만을 감지하지 못해 골든타임을 놓칩니다.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pnum">04</div>
+      <h3>무너지는 브랜드 신뢰도</h3>
+      <p>동일한 상황에 강사마다 다른 답변은 학원의 전문성을 의심하게 만듭니다.</p>
+    </div>
   </div>
-  <div class="sec-cta">
-    <button class="btn-purple" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+  <div class="pain-next">
+    <a href="#why" onclick="event.preventDefault();document.getElementById('why').scrollIntoView({behavior:'smooth'})">에듀마인은 어떻게 해결할까요? ↓</a>
   </div>
 </section>
 
