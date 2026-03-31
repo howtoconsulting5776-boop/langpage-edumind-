@@ -267,12 +267,23 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
 .fl{animation:float 3.5s ease-in-out infinite;}
 
+.mo-only{display:none;}
 @media(max-width:768px){
+  .mo-only{display:block;}
   .nav-links{display:none;}
   .footer-top{flex-direction:column;}
   .footer-bottom{flex-direction:column;}
   .fcopy{text-align:left;}
   .ftrust{justify-content:flex-start;}
+  .hero h1{font-size:clamp(1.5rem,8vw,2rem);word-break:keep-all;}
+  .hero-desc{font-size:.9rem;margin-bottom:24px;}
+  .hero-proof span{font-size:.75rem;gap:3px;}
+  .hero-proof{gap:10px;}
+  .stats{gap:14px;width:100%;}
+  .gauge-wrap{width:96px;height:52px;}
+  .gauge-val{font-size:1.45rem;}
+  .gauge-unit{font-size:.72rem;}
+  .stat-l{font-size:.7rem;max-width:88px;}
 }
 </style>
 </head>
@@ -306,8 +317,7 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     <p class="hero-hook fu">평소와 다른 학부모의 말투, 혹시 퇴원 신호인 줄 모르고 지나치셨나요?</p>
 
     <h1 class="fu d1">
-      학부모의 마음이 닫히기 전,<br/>
-      상담의 <span class="golden">골든타임</span>을 포착하세요
+      학부모의 마음이 닫히기 전,<br class="mo-only"> 상담의 <span class="golden">골든타임</span>을 포착하세요
     </h1>
 
     <p class="hero-desc fu d2">원장님의 철학이 담긴 데이터 분석으로 학부모의 신뢰를 회복합니다.</p>
