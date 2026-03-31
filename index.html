@@ -44,14 +44,9 @@ nav{position:fixed;top:0;width:100%;z-index:100;padding:12px 5%;display:flex;ali
 
 .hero-content{position:relative;z-index:2;}
 .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 16px;border-radius:50px;font-size:.76rem;font-weight:700;margin-bottom:24px;}
-.hero h1{font-size:clamp(2rem,5.2vw,3.8rem);font-weight:900;color:rgba(255,255,255,.9);line-height:1.5;margin-bottom:28px;letter-spacing:-0.025em;}
-.hero h1 .line1{display:block;color:rgba(255,255,255,.75);font-size:.88em;}
-.hero h1 .line2{display:block;color:#fff;}
-.hero h1 .golden{color:var(--cyan);position:relative;}
-.hero h1 em{font-style:normal;border-bottom:4px solid var(--cyan);padding-bottom:2px;color:#fff;}
-.hero h1 strong{font-style:normal;border-bottom:4px solid var(--pink);padding-bottom:2px;color:#fff;}
-.hero-desc{font-size:1rem;font-weight:500;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 38px;line-height:1.75;letter-spacing:-.01em;white-space:nowrap;}
-@media(max-width:640px){.hero-desc{white-space:normal;}}
+.hero h1{font-size:clamp(2.1rem,5vw,3.7rem);font-weight:900;color:#fff;line-height:1.55;margin-bottom:26px;letter-spacing:-0.025em;}
+.hero h1 .golden{color:var(--cyan);}
+.hero-desc{font-size:1rem;font-weight:500;color:rgba(255,255,255,.65);max-width:560px;margin:0 auto 38px;line-height:1.75;letter-spacing:-.01em;}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
 .hero-proof{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:20px;margin-bottom:36px;}
 .hero-proof span{font-size:.85rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:5px;}
@@ -84,7 +79,7 @@ section{padding:88px 5%;}
 .btn-purple:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(75,59,192,.5);}
 
 /* HERO HOOK */
-.hero-hook{font-size:.9rem;color:rgba(255,255,255,.45);font-weight:400;margin-bottom:20px;letter-spacing:.01em;opacity:.85;}
+.hero-hook{font-size:.92rem;color:rgba(255,255,255,.6);font-weight:400;margin-bottom:22px;letter-spacing:.01em;line-height:1.6;}
 
 /* CARDNEWS */
 .cardnews{background:linear-gradient(160deg,#1A1340,#2A1F70);}
@@ -291,16 +286,14 @@ footer{background:#1A1340;padding:52px 5% 32px;}
   <div class="hblob hb2"></div>
   <div class="hblob hb3"></div>
   <div class="hero-content">
-    <div class="badge fu">🧠 RAG 기반 AI 학원 상담 솔루션</div>
-
     <p class="hero-hook fu">평소와 다른 학부모의 말투, 혹시 퇴원 신호인 줄 모르고 지나치셨나요?</p>
 
     <h1 class="fu d1">
-      <span class="line1">결심한 뒤에는 늦습니다.</span>
-      <span class="line2">학부모의 마음이 닫히기 전,<br/><span class="golden">골든타임</span>을 AI가 알려드립니다</span>
+      학부모의 마음이 닫히기 전,<br/>
+      상담의 <span class="golden">골든타임</span>을 포착하세요
     </h1>
 
-    <p class="hero-desc fu d2">원장님의 철학이 담긴 최적의 대응으로 학부모의 신뢰를 회복하세요.</p>
+    <p class="hero-desc fu d2">원장님의 철학이 담긴 데이터 분석으로 학부모의 신뢰를 회복합니다.</p>
     <div class="hero-btns fu d3">
       <button class="btn-primary" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">🎉 무료 체험 시작하기</button>
       <button class="btn-g" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">기능 살펴보기 →</button>
