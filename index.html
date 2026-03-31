@@ -79,6 +79,26 @@ section{padding:88px 5%;}
 .btn-purple{display:inline-block;background:linear-gradient(135deg,var(--pl),var(--pd));color:#fff;border:none;padding:15px 38px;border-radius:50px;font-size:.94rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 22px rgba(75,59,192,.35);transition:.2s;text-decoration:none;}
 .btn-purple:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(75,59,192,.5);}
 
+/* HERO HOOK */
+.hero-hook{font-size:.9rem;color:rgba(255,255,255,.6);font-weight:500;margin-bottom:14px;letter-spacing:-.01em;}
+
+/* CARDNEWS */
+.cardnews{background:linear-gradient(160deg,#1A1340,#2A1F70);}
+.cardnews .sec-title .sec-label{background:rgba(108,92,231,.35);color:rgba(255,255,255,.8);}
+.cardnews .sec-title h2{color:#fff;}
+.cardnews .sec-title p{color:rgba(255,255,255,.55);}
+.cn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1080px;margin:0 auto;}
+.cn-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:30px 28px 24px;position:relative;overflow:hidden;transition:.3s;}
+.cn-card:hover{background:rgba(255,255,255,.1);transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.cn-bar{position:absolute;top:0;left:0;right:0;height:3px;}
+.cn-icon{font-size:2rem;margin-bottom:12px;}
+.cn-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);padding:3px 10px;border-radius:50px;margin-bottom:14px;}
+.cn-q{font-size:.95rem;font-weight:700;color:#fff;line-height:1.55;margin-bottom:14px;letter-spacing:-.01em;}
+.cn-a{font-size:.83rem;color:rgba(255,255,255,.6);line-height:1.8;}
+.cn-a strong{color:rgba(255,255,255,.9);font-weight:700;}
+.cardnews .sec-cta .btn-purple{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);box-shadow:none;}
+.cardnews .sec-cta .btn-purple:hover{background:rgba(255,255,255,.2);box-shadow:none;}
+
 /* PAIN */
 .pain{background:#fff;}
 .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;max-width:1080px;margin:0 auto;}
@@ -268,7 +288,8 @@ footer{background:#1A1340;padding:52px 5% 32px;}
   <div class="hblob hb3"></div>
   <div class="hero-content">
     <div class="badge fu">🧠 RAG 기반 AI 학원 상담 솔루션</div>
-    <h1 class="fu d1">퇴원하는 학부모,<br/><em>AI로 되돌리세요</em></h1>
+    <p class="hero-hook fu">평소와 다른 학부모의 말투, 혹시 퇴원 신호인 줄 모르고 지나치셨나요?</p>
+    <h1 class="fu d1">결심한 뒤에는 늦습니다.<br/>학부모의 마음이 닫히기 전,<br/><em>AI가 골든타임을 알려드립니다</em></h1>
     <p class="fu d2">학원 상담 데이터를 분석해 이탈 징후를 사전에 포착하고, 원장님의 철학이 담긴 최적의 대응으로 학부모의 신뢰를 회복합니다.</p>
     <div class="hero-btns fu d3">
       <button class="btn-primary" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">🎉 무료 체험 시작하기</button>
@@ -341,6 +362,53 @@ footer{background:#1A1340;padding:52px 5% 32px;}
     <div class="pain-card"><div class="pnum">02</div><h3>📊 상담 역량의 불균형</h3><p>원장님만큼 학원 철학을 이해하는 강사가 부족해 상담 결과가 개인 역량에만 의존합니다.</p></div>
     <div class="pain-card"><div class="pnum">03</div><h3>⏰ 퇴원 신호 포착 실패</h3><p>학부모의 말투에 숨겨진 불만 징후를 감지하지 못해 골든타임을 놓칩니다.</p></div>
     <div class="pain-card"><div class="pnum">04</div><h3>🎭 일관성 없는 대응</h3><p>동일 컴플레인에 강사마다 다르게 대응해 학원 브랜드 신뢰도가 흔들립니다.</p></div>
+  </div>
+  <div class="sec-cta">
+    <button class="btn-purple" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">무료 체험 시작하기 →</button>
+  </div>
+</section>
+
+<!-- 카드뉴스: 공감 카피 -->
+<section class="cardnews" id="cardnews">
+  <div class="sec-title">
+    <div class="sec-label" style="background:var(--ps);color:var(--p);">💬 공감하시나요?</div>
+    <h2>학원 원장님들의 진짜 고민,<br/>에듀마인이 해결합니다</h2>
+    <p>수백 명의 원장님·강사님과 나눈 이야기에서 뽑은 가장 솔직한 현장의 언어입니다.</p>
+  </div>
+  <div class="cn-grid">
+
+    <div class="cn-card cn-c1">
+      <div class="cn-icon">👨‍🏫</div>
+      <div class="cn-tag">상담 역량 평준화</div>
+      <p class="cn-q">"원장님만큼 상담하는 강사가 없어 답답하시죠?"</p>
+      <p class="cn-a">원장님의 상담 뇌를 AI로 복제해 드립니다.<br/><strong>초보 강사도 10년 차 원장처럼.</strong> 우리 학원만의 철학이 담긴 완벽한 상담 스크립트를 즉시 생성합니다.</p>
+      <div class="cn-bar" style="background:linear-gradient(90deg,var(--pl),var(--pd));"></div>
+    </div>
+
+    <div class="cn-card cn-c2">
+      <div class="cn-icon">📊</div>
+      <div class="cn-tag">데이터 기반 신뢰</div>
+      <p class="cn-q">"기억에만 의존하는 상담은 이제 그만."</p>
+      <p class="cn-a">1년 전 상담 기록까지 데이터로 증명하는 전문가의 상담을 시작하세요.<br/><strong>감(感)으로 하는 상담은 불안합니다.</strong> AI가 분석한 데이터로 학부모에게 확신을 주는 로드맵을 제시하세요.</p>
+      <div class="cn-bar" style="background:linear-gradient(90deg,var(--cyan),#3B82F6);"></div>
+    </div>
+
+    <div class="cn-card cn-c3">
+      <div class="cn-icon">⏰</div>
+      <div class="cn-tag">시간·감정 노동 해소</div>
+      <p class="cn-q">"밤늦게 날아온 컴플레인 카톡, 어떻게 답할지 고민하며 밤잠 설치지 마세요."</p>
+      <p class="cn-a"><strong>단 3분.</strong> 상담 내용만 넣으세요. 분석부터 맞춤 대응안까지 AI가 대신 고민해 드립니다.</p>
+      <div class="cn-bar" style="background:linear-gradient(90deg,var(--orange),var(--pink));"></div>
+    </div>
+
+    <div class="cn-card cn-c4">
+      <div class="cn-icon">💰</div>
+      <div class="cn-tag">매출 지키기</div>
+      <p class="cn-q">"신규 등록보다 중요한 것은 퇴원 방어입니다."</p>
+      <p class="cn-a">새어 나가는 원비를 AI로 꼼꼼히 막으세요.<br/><strong>상담이 두려운 학원은 성장할 수 없습니다.</strong> 어떤 학부모를 만나도 당당해지는 AI 상담 파트너를 곁에 두세요.</p>
+      <div class="cn-bar" style="background:linear-gradient(90deg,var(--green),var(--cyan));"></div>
+    </div>
+
   </div>
   <div class="sec-cta">
     <button class="btn-purple" onclick="window.open('https://edumindinsight-lwsi.vercel.app/','_blank')">무료 체험 시작하기 →</button>
