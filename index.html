@@ -135,9 +135,15 @@ section{padding:88px 5%;}
 .wi1{background:linear-gradient(135deg,#EDE9FF,#D4CEFF);}
 .wi2{background:linear-gradient(135deg,#E0F7F5,#C0EEE9);}
 .wi3{background:linear-gradient(135deg,#FFE8F3,#FFCDE5);}
-.why-card h3{font-size:1.1rem;font-weight:900;margin-bottom:12px;color:var(--txt);}
+.why-card h3{font-size:1.15rem;font-weight:900;margin-bottom:12px;color:var(--txt);letter-spacing:-.03em;line-height:1.35;}
 .why-card p{font-size:.85rem;color:var(--muted);line-height:1.85;}
 .why-highlight{display:inline-block;margin-top:16px;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:50px;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.why-icon{animation:float 3s ease-in-out infinite;}
+.wc2 .why-icon{animation-delay:.6s;}
+.wc3 .why-icon{animation-delay:1.2s;}
+.btn-purple{font-size:1rem;padding:15px 42px;}
+.btn-purple:hover{background:linear-gradient(135deg,#6C5CE7,#4B3BC0);transform:translateY(-3px);box-shadow:0 12px 36px rgba(75,59,192,.55);}
 .wh1{background:var(--ps);color:var(--p);}
 .wh2{background:#E0F7F5;color:#007A6E;}
 .wh3{background:#FFE8F3;color:#C0396B;}
@@ -441,26 +447,25 @@ footer{background:#1A1340;padding:52px 5% 32px;}
 <!-- WHY 에듀마인 -->
 <section class="why" id="why">
   <div class="sec-title">
-    <div class="sec-label" style="background:var(--ps);color:var(--p);">💡 왜 에듀마인인가?</div>
-    <h2>다른 솔루션과 결정적으로 다릅니다</h2>
+    <h2>원장님이 한 명 더 생기는 것,<br/>에듀마인이라면 가능합니다</h2>
     <p>단순한 AI 챗봇이 아닙니다. 우리 학원만의 데이터로 움직이는 '상담 두뇌'입니다.</p>
   </div>
   <div class="why-grid">
     <div class="why-card wc1">
       <div class="why-icon wi1">🧬</div>
-      <h3>원장님 철학을<br/>AI에 복제합니다</h3>
+      <h3>원장님의 상담 노하우를<br/>디지털 자산화합니다</h3>
       <p>수년간 쌓아온 운영 철학과 모범 상담 사례를 AI가 학습해, 원장님이 자리를 비워도 동일한 수준의 상담이 이루어집니다.</p>
       <div class="why-highlight wh1">RAG 맞춤 학습</div>
     </div>
     <div class="why-card wc2">
       <div class="why-icon wi2">🕐</div>
-      <h3>24시간<br/>상담 대응 가능</h3>
+      <h3>상담 골든타임,<br/>1분도 놓치지 마세요</h3>
       <p>늦은 밤 카카오톡으로 날아오는 학부모 문의도, AI 가이드 덕분에 언제 어디서나 일관된 답변으로 신뢰를 유지합니다.</p>
       <div class="why-highlight wh2">24/7 가이드 제공</div>
     </div>
     <div class="why-card wc3">
       <div class="why-icon wi3">🚨</div>
-      <h3>퇴원 신호를<br/>골든타임에 포착</h3>
+      <h3>데이터로 예측하는<br/>선제적 퇴원 방어</h3>
       <p>학부모 말투의 부정적 감정 변화를 AI가 실시간 분석해, 퇴원 결심이 굳어지기 전에 선제적으로 대응할 수 있습니다.</p>
       <div class="why-highlight wh3">감정 AI 실시간 분석</div>
     </div>
