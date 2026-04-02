@@ -846,7 +846,10 @@ function toggleFaq(btn){
   const item=btn.closest('.fi-item');
   const open=item.classList.contains('open');
   document.querySelectorAll('.fi-item').forEach(i=>i.classList.remove('open'));
-  if(!open)item.classList.add('open');
+  if(!open){
+    item.classList.add('open');
+    gtag('event','faq_open',{faq_question:btn.textContent.replace(/▾/,'').trim()});
+  }
 }
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -859,18 +862,26 @@ document.querySelectorAll('.pain-card,.fc,.pc,.tc,.step,.why-card').forEach(el=>
   obs.observe(el);
 });
 
-// ── GTM dataLayer 이벤트 전송 ──
+// ── GA4 이벤트 전송 ──
 function sendGA4Event(eventName, params){
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(Object.assign({event: eventName}, params));
+  gtag('event', eventName, params);
 }
+
+// CTA 버튼 클릭
 document.querySelectorAll('[data-cta]').forEach(function(btn){
   btn.addEventListener('click', function(){
-    var label = this.getAttribute('data-cta');
-    sendGA4Event('cta_click', {
-      cta_location: label,
+    gtag('event', 'cta_click', {
+      cta_location: this.getAttribute('data-cta'),
       page_title: document.title
     });
+  });
+});
+
+// 외부 링크 이탈
+document.querySelectorAll('a[target="_blank"], button[onclick*="window.open"]').forEach(function(el){
+  el.addEventListener('click', function(){
+    var url = this.getAttribute('href') || (this.getAttribute('onclick')||'').match(/'(https?[^']+)'/)?.[1] || '';
+    if(url) gtag('event', 'outbound_click', {link_url: url, page_title: document.title});
   });
 });
 
@@ -887,7 +898,7 @@ document.querySelectorAll('[data-cta]').forEach(function(btn){
     [50, 80].forEach(function(m){
       if(!milestones[m] && pct >= m){
         milestones[m] = true;
-        sendGA4Event('scroll_depth', {depth_percent: m, page_title: document.title});
+        gtag('event', 'scroll_depth', {depth_percent: m, page_title: document.title});
       }
     });
   }, {passive: true});
